@@ -1,0 +1,40 @@
+archi                   Archipelago Analysis
+bestopt                 Best Of Set Optimal Partitions From Random
+                        Starts
+classmatch              Classification Matching and Differencing
+clique                  Maximal Clique Analysis
+clique.test             Clique Test
+clusplot.partana        Bi-variate Clusplot of a Partana Object
+confus                  Confusion Matrix
+fuzconfus               Fuzzy Confusion Matrix
+isamic                  Indicator Species Analysis to Minimize
+                        Intermediate Constancy
+maxpact                 Maximally Compact Sets Analysis
+murdoch                 Indicator Species Analysis by Murdoch
+                        Preference Function
+optindval               Optimizing Classification by Maximizing Dufrene
+                        and Legendre's Indicator Value
+optpart                 Optimal Partitioning of Dissimilarity/Distance
+                        Matrices
+optsil                  Clustering by Optimizing Silhouette Widths
+opttdev                 Optimizing Classification by Minimizing Table
+                        Deviance
+partana                 Partition Analysis
+partition.partana       Partition Analysis
+plot.mps                Plotting Maximally Compact Sets
+plot.partana            Plotting a Partition Analysis
+refine                  Refining a Classification by Re-Assigning
+                        Memberships
+shoshsite               Site Data for the Shoshone National Forest,
+                        Wyoming, USA
+shoshveg                Vascular Plant Species Cover for the Shoshone
+                        National Forest, Wyoming, USA
+silhouette.partana      Produce a Silhouette Object From a Partana or
+                        Clustering Object
+slice                   Slice a Hierarchical Clustering Dendrogram with
+                        a Mouse
+stride                  Stride: Producing a Sequence of Clusterings
+tabdev                  Classification Validity Assessment by Table
+                        Deviance
+testopt                 Identify Misclassified Plots in an Optpart
+                        Classification

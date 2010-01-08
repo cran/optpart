@@ -1,0 +1,17 @@
+optpart 1.1-0
+
+There are several interesting changes to 1.1-0.
+
+1) there are now four different iterative re-assignment classification
+algorithms:
+
+   1.1) optpart - to optimize the partana statistic
+   1.2) optsil - to optimize silhouette widths
+   1.3) optindval - to optimize Dufrene and Legendre indicator values
+   1.4) opttdev - to optimize table deviance
+
+2) the iterative re-assigmnent algorithms now all have multiple inheritance.
+   2.1) their own specific class, and 
+   2.2) clustering - which is shared with several other simpler algorithms
+
+
