@@ -18,10 +18,10 @@ hierarchical structure.}
 cluster routine that returns connected clusters.  Every sample in a  cluster is
 connected by a path with step lengths of at most alpha dissimilarity to every
 other sample in the cluster, and is more than alpha dissimilar to all other
-sample in all other clusters.}
+samples in all other clusters.}
 
 \value{produces an object of class \sQuote{clustering}, a list with a vector
-\sQuote{clustering} vector of cluster memberships}
+\sQuote{clustering} of cluster memberships}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}
@@ -29,7 +29,9 @@ sample in all other clusters.}
 
 \examples{
     data(shoshveg) # produces a vegetation dataframe
-    dis.bc <- dsvdis(shoshveg,'bray/curtis') # produces a Bray/Curtis dissimilarity matrix
+    dis.bc <- dsvdis(shoshveg,'bray/curtis') 
+        # produces a Bray/Curtis dissimilarity matrix
     arc.50 <- archi(dis.bc,0.5) # clusters at 0.5 dissimilarity 
+    table(arc.50$clustering)
 }
 \keyword{cluster}

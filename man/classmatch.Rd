@@ -22,7 +22,7 @@ It's important to note that a single class may be partitioned into
 several new classes, and the the number of new classes produced may be higher than
 either of the classifications considered.
 
-If \sQuote{type=='direct'} classmatch assumes a one-to-one relation between the
+If \sQuote{type=="direct"} classmatch assumes a one-to-one relation between the
 two classifications compared.  Classmatch finds the largest case of agreement,
 and assigns that match to class 1.  It then zeros out the rows and columns
 corresponding to those classes, and iterates.
@@ -45,7 +45,7 @@ corresponding to those classes, and iterates.
     \email{droberts@montana.edu}
 }
 
-\seealso{\code{\link[cluster]{partition}}, \code{optpart},
+\seealso{\code{\link[cluster]{partition}}, \code{\link[optpart]{optpart}},
           \code{\link[optpart]{slice}}}
 
 \examples{

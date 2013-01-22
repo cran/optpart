@@ -29,9 +29,9 @@ d \tab sample is not in type and species is not present\cr
 }
 }
 
-\value{A data.frame of \eqn{phi} values with species as rows and clusters as columns}
+\value{A data.frame of \eqn{\phi} values with species as rows and clusters as columns}
 
-\references{Tich\'y, L. and M. Chytr/'y.  2006.  Statistical determination of
+\references{Tichy, L. and M. Chytry.  2006.  Statistical determination of
 diagnostic species for site groups of unequal size.  Journal of Vegetation Science
 17:809-818.}
 

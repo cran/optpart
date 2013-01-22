@@ -13,16 +13,13 @@ iterative re-allocation algorithm to maximize the mean silhouette width of a
 clustering for a given number of clusters.}
 
 \usage{optsil(x,dist,maxitr)
-\method{optsil}{clustering}(x,dist,maxitr)
-\method{optsil}{partana}(x,dist,maxitr)
-\method{optsil}{partition}(x,dist,maxitr)
-\method{optsil}{stride}(x,dist,maxitr)
 }
 
 \arguments{
         \item{x}{an integer, a vector of integers, an object of class \sQuote{clustering},
                  \sQuote{partana}, \sQuote{partition}, or \sQuote{stride}}
-	\item{dist}{a dist object from \code{dist}, \code{\link[labdsv]{dsvdis}},
+	\item{dist}{a object of class \sQuote{dist} from \code{\link{dist}}, 
+               \code{\link[labdsv]{dsvdis}},
                or \code{\link[vegan]{vegdist}}}
 	\item{maxitr}{the maximum number of iterations to perform}
 }
@@ -40,7 +37,7 @@ Optsil is an unweighted algorithm, i.e. each of the objects is
 included in the calculation exactly once.
 
 Optsil can be extremely slow to converge, and is best used to \sQuote{polish} an
-existing partition or clusterings resulting from slicing an \code{hclust} or 
+existing partition or clusterings resulting from slicing an \code{\link{hclust}} or 
 from functions \code{\link[optpart]{optpart}}, \code{\link[cluster]{pam}},
 \code{\link[cluster]{diana}} or other initial clusterings.  It is possible 
 to run optsil from a random start, but is EXTREMELY SLOW to converge, and should be 

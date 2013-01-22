@@ -2,13 +2,12 @@
 \alias{optindval}
 \title{Optimizing Classification by Maximizing Dufrene and Legendre's Indicator Value}
 \description{optindval is a iterative re-assignment classification algorithm
-that assigns samples to clusters to minimize the 
-with respect to the row-wise relative abundance of the elements}
+that assigns samples to clusters to maximize the sum of indicator values.}
 \usage{optindval(veg,clustering,maxitr=100,minsiz=5)}
 \arguments{
-    \item{veg}{a vegetation o other taxon table with samples as rows and taxa as columns}
+    \item{veg}{a vegetation or other taxon table with samples as rows and taxa as columns}
     \item{clustering}{an index of cluster membership for each sample. May be either
-                      a numeric vector of length equal tot he number of samples, or
+                      a numeric vector of length equal to the number of samples, or
                       an object that inherits from class \sQuote{cluster}}
    \item{maxitr}{the maximum number of iterations to attempt}
    \item{minsiz}{the minimum size cluster to consider reassigning a sample out of}
@@ -38,7 +37,7 @@ used to polish existing classifications}
     data(shoshveg) # returns a data.frame of vegetation data called shoshveg
     dis.bc <- dsvdis(shoshveg,'bray') # generate Bray/Curtis dissimilarity matrix
     opt.5 <- optpart(5,dis.bc) # generate 5-cluster optpart
-    res <- optindval(shoshveg,opt.5) # polish the optpart result
-    classmatch(opt.5,res) # see the plot re-assignments
+    \dontrun{res <- optindval(shoshveg,opt.5)} # polish the optpart result
+    \dontrun{classmatch(opt.5,res)} # see the plot re-assignments
 }
 \keyword{cluster}

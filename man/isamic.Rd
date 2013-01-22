@@ -33,7 +33,7 @@ where:\cr
 species of special interest in clusters or types.  The most widely used indicator species
 analysis was proposed by Dufrene and Legendre (1997), and is included in package
 \sQuote{labdsv} as \code{\link[labdsv]{indval}}. isamic differs significantly from
-indval in assumption and objective, seeking to identify species that largely present or 
+indval in assumption and objective, seeking to identify species that are largely present or 
 absent with types, and down-weighting species with intermediate constancies.}
 
 \author{

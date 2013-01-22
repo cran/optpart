@@ -5,12 +5,12 @@
 
 \title{Indicator Species Analysis by Murdoch Preference Function}
 \description{Calculates the indicator value 
-of species in a single cluster or type using the Murdoch Preference Function}
+of species in a single cluster or environment type using the Murdoch Preference Function}
 
 \usage{
-    murdoch(taxa,type,minval=0,minplt=10)
-    \method{summary}{murdoch}(object,pval=0.05,ndigits=3,\dots)
-    \method{plot}{murdoch}(x,axtype=1,pval=0.05,\dots)
+murdoch(taxa,type,minval=0,minplt=10)
+\method{summary}{murdoch}(object,pval=0.05,ndigits=3,\dots)
+\method{plot}{murdoch}(x,axtype=1,pval=0.05,\dots)
 }
 
 \arguments{
@@ -40,7 +40,7 @@ where:
   \eqn{n_i} = number of samples in type i.
 
 Probabilities are based on the hypergeometric distribution calculation of 
-having as many presences in a type as observed.}
+having as many or more presences in a type as observed.}
 
 \value{a list object of class \sQuote{murdoch} with components:
     \item{minplt}{the minimum number of presences to be included}

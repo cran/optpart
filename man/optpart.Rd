@@ -12,45 +12,42 @@ similarity/among-cluster similarity for a given number of clusters.  Optpart can
 a crisp (classical) partitioning, or a fuzzy partitioning algorithm.}
 \usage{
 optpart(x, dist, maxitr = 100, mininc = 0.001, maxdmu = 1)
-\method{optpart}{clustering}(x, dist, maxitr = 100, mininc = 0.001, maxdmu = 1)
-\method{optpart}{partana}(x, dist, maxitr = 100, mininc = 0.001, maxdmu = 1)
-\method{optpart}{partition}(x, dist, maxitr = 100, mininc = 0.001, maxdmu = 1)
-\method{optpart}{stride}(x, dist, maxitr = 100, mininc = 0.001, maxdmu = 1)
 }
 \arguments{
 	\item{x}{an integer, integer vector, factor vector, or objects of class \sQuote{clustering},
                 \sQuote{partana}, \sQuote{partition} or \sQuote{stride}} 
-	\item{dist}{a dist object from \code{dist}, \code{dsvdis}, or \code{vegdist}}
+	\item{dist}{a object of class \sQuote{dist} from \code{\link{dist}}, 
+               \code{\link{dsvdis}}, or \code{\link[vegan]{vegdist}}}
 	\item{maxitr}{the maximum number of iterations to perform}
         \item{mininc}{the minimum increment in the within/among similarity ratio to
                   continue iterating}
 	\item{maxdmu}{the \sQuote{maximum delta mu}.  If 1, a crisp (non-fuzzy) partition
-            results.  If [0,1] a fuzzy partition results.}
+            results.  If (0,1) a fuzzy partition results.}
 }
 \details{optpart produces a partition, or clustering, of items into clusters by
 iterative reallocation of items to clusters so as to maximize the within cluster/
 among cluster similarity ratio.  At each iteration optpart ranks all possible
-re-allocations of a sample from one cluster to another.  The reallocation that maximizes
+re-allocations of a sample from one cluster to another.  The re-allocation that maximizes
 the change in the within-cluster/among-cluster ratio is performed.  The next best
 reallocation is considered, and if it does not include any clusters already modified, it is
 also performed, as re-allocations of independent clusters are independent and additive in
 effect.  When no further re-allocations can be performed in that iteration, the algorithm
 recalculates all possible re-allocations and iterates again.  When no re-allocations exist that
-improve the within/among ratio, or the maximum number of iterations is reached, the
-algorithm stops.
+improve the within/among ratio greater than \sQuote{mininc}, 
+or the maximum number of iterations is reached, the algorithm stops.
 
 optpart is designed to run from a random start or the levels of a factor, or
 preferably from existing initial partitions.  Specifying a single integer gives the number of clusters
-desired using random starts.  Specifying an integer vector gives the initial assignments of
+desired using a random start.  Specifying an integer vector gives the initial assignments of
 items to clusters.   Initial assignments can also be extracted from a number of objects.
 Specific
 methods exist for objects of class \sQuote{clustering} from functions
-\code{slice} or \code{archi}, class \sQuote{partana} from function
-\code{partana}, class \sQuote{stride} from \code{stride}, or 
+\code{\link{slice}} or \code{\link{archi}}, class \sQuote{partana} from function
+\code{\link{partana}}, class \sQuote{stride} from \code{\link{stride}}, or 
 class \sQuote{partition} from functions
-\code{\link[cluster]{pam}} or \code{\link[cluster]{diana}}.  optpart is deterministic from a
+\code{\link{pam}} or \code{\link{diana}}.  optpart is deterministic from a
 given initial condition.  To get good results from a random start, multiple
-random starts should be attempted, using function \code{\link[optpart]{bestopt}}.
+random starts should be attempted, using function \code{\link{bestopt}}.
 
 Optpart is an unweighted algorithm, i.e. each of the \eqn{(n^2-n)/2} pairwise distances or
 dissimilarities is included in the calculation of the ratio exactly once.  Optpart
@@ -74,7 +71,7 @@ entropy, with many items assigned completely to a single cluster.
 \item{ctc}{a matrix of mean cluster-to-cluster similarity}
 \item{musubx}{a matrix of membership of each item to each cluster.  If \code{maxdmu}
 is 1, this will be a single 1 in the appropriate cluster and 0 in all others.  If
-\code{maxdmu} is [0,1) then the musubx represent fuzzy memberships in each cluster.}
+\code{maxdmu} is (0,1) then the musubx represent fuzzy memberships in each cluster.}
 \item{clustering}{a vector giving the cluster each item is assigned to.  If optpart
 is run as a fuzzy partitioning, this is determined by the maximum membership observed.}
 \item{ratio}{the vector of within/among similarities achieved at each iteration.  The final

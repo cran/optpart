@@ -14,11 +14,11 @@ stride(seq,arg2,type='pam',numrep=10,maxitr=100)
 }
 \arguments{
 \item{seq}{a sequence, in either a:b or seq(a,b,c) form}
-\item{arg2}{an object of class \sQuote{dist} from \code{dist},
+\item{arg2}{an object of class \sQuote{dist} from \code{\link{dist}},
 \code{\link[labdsv]{dsvdis}} or \code{\link[vegan]{vegdist}} among other
 sources, or of class \sQuote{hclust}}
 \item{type}{if arg2 is an object of class \sQuote{dist}, type specifies the
-algorithm to produce clusters, and be either \sQuote{pam} or \sQuote{optpart}.}
+algorithm to produce clusters, and can be either \sQuote{pam} or \sQuote{optpart}.}
 \item{numrep}{if arg2 is an object of class \sQuote{dist} and type =
 \sQuote{optpart}, numrep specifies the number of replicates to run in function 
 \code{\link[optpart]{optpart}}.}
@@ -27,7 +27,7 @@ algorithm to produce clusters, and be either \sQuote{pam} or \sQuote{optpart}.}
  in function
 \code{\link[optpart]{optpart}}}
 \item{x}{an object of class \sQuote{stride}}
-\item{dist}{an object of class \sQuote{dist} from \code{dist}, 
+\item{dist}{an object of class \sQuote{dist} from \code{\link{dist}}, 
 \code{\link[labdsv]{dsvdis}}, or \code{\link[vegan]{vegdist}}}
 \item{col2}{the color code for the second line in the graph}
 \item{\dots}{ancillary arguments to the plot or silhouette functions}

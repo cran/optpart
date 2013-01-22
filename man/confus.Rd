@@ -7,7 +7,7 @@ classification tree, or other predictive model.}
 \usage{confus(clustering,fitted)}
 \arguments{
     \item{clustering}{an object of class \sQuote{clustering} or
-a vector of (integer) class membership values}
+a vector of (integer or factor) class membership values}
     \item{fitted}{a matrix of probabilities of membership in classes, such
            as produced by \code{fitted} functions}
 }

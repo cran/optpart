@@ -18,6 +18,6 @@ phi <- function (taxa,clustering,minplt=10)
      }
      out <- data.frame(out)
      row.names(out) <- names(taxa)
-     names(out) <- as.character(levels(clustering))
+     names(out) <- as.character(1:length(N.p))
      out
 }

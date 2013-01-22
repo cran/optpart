@@ -6,7 +6,7 @@ solutions from random starts, keeping the best result of the set}
 \usage{bestopt(dist,numclu,numrep,maxitr=100)
 }
 \arguments{
-    \item{dist}{an object of class dist from \code{\link{dist}},
+    \item{dist}{an object of class \sQuote{dist} from \code{\link{dist}},
        \code{\link[vegan]{vegdist}}, or \code{\link[labdsv]{dsvdis}},
         or a symmetric dissimilarity matrix}
     \item{numclu}{the number of clusters desired}
@@ -22,14 +22,14 @@ assignment of items to clusters \sQuote{numitr} times, keeping the best result
 \item{ctc}{the mean similarity of each cluster to other clusters}
 \item{musubx}{the membership of each item in each cluster}
 \item{clustering}{the best \sQuote{crisp} partition from musubx}
-\item{ratio}{the within-cluster/among-cluster similarity ratio achieved on the final iteration}
+\item{ratio}{the within-cluster/among-cluster similarity ratio achieved at each iteration
+of the selected result.}
 }
 
-\note{This is a simple wrapper function to automate independent random starts }
+\note{This is a simple wrapper function to automate independent random starts of function \link[optpart]{optpart}.}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}
-    \url{http://ecology.msu.montana.edu/labdsv/R/optpart}
 }
 \seealso{
 \code{\link[optpart]{optpart}},

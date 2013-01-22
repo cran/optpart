@@ -2,6 +2,8 @@ confus <- function (clustering, fitted)
 {
     if (inherits(clustering,c('clustering','partana','pam')))
         clustering <- clustering$clustering
+    if (is.factor(clustering)) 
+        clustering <- as.numeric(clustering)
     if (is.logical(clustering))
         clustering <- as.numeric(factor(clustering))
     numplt<- length(clustering)

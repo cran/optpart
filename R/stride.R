@@ -56,7 +56,7 @@ plot.stride <- function (x,dist,col2=4, ...)
     par(new=TRUE)
     tmp <- silhouette(x,dist)
     plot(tmp,axes=FALSE,xlab='',ylab='',col=col2,type='b')
-    axis(4,at=pretty(range(tmp$sil_width)),col.axis=col2,col.tick=col2)
+    axis(4,at=pretty(range(tmp$sil_width)),col.axis=col2,col.ticks=col2)
     mtext('Silhouette Width',4,2.5,col=col2)
     par(oldpar)
 }

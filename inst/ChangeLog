@@ -1,3 +1,26 @@
+optpart 2.1-0
+
+1) updated optpart to NAMESPACE format
+
+2) added several new utility functions to manage clusters
+
+   2.1) bestfit - Find the Representative Elements of a Cluster
+   2.2) compare - Compare the Constancy of Specific Types
+   2.3) consider - Suggestions for Possibly Merging Clusters
+   2.4) mergeclust - Merge Clusters
+   2.5) reordclust - Reorder Cluster Numbers
+   2.6) typal - Find the Typal Members of Each Cluster
+
+   3) cleaned up the documentation for several functions
+
+optpart 1.2-1
+
+changed testpart to have class 'testpart' and improved the print function.
+It now reports class fractions of misfits as well as individual misfit
+plots, and allows setting a threshold misfit value for inclusion in the 
+output (default=0.0)
+
+
 optpart 1.1-0
 
 There are several interesting changes to 1.1-0.
