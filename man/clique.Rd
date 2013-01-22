@@ -27,8 +27,8 @@ clique(dist,alphac,minsize=1,mult=100)
 i.e. objects can belong to more than one clique, and every object belongs to at
 least one clique.  The maximal clique solution is solved for by symbolic
 computation, as opposed to numerical computation, and produces a unique
-solution.  The number of cliques produced can not be known beforehand,
-and can exceed the number of objects.  The \sQuote{mult} argument controls the
+solution.  The number of cliques produced cannot be known beforehand,
+and can significantly exceed the number of objects.  The \sQuote{mult} argument controls the
 size of the stack to hold intermediate terms in the equation as the solution
 proceeds.  At each iteration, the algorithm simplifies the equation to the
 extent possible, and recovers space used to hold terms that have been
@@ -42,9 +42,10 @@ to increase the \sQuote{mult} argument to a higher value.
 for \eqn{n} objects.  The number of cliques generated, and the run time, is sensitive
 to \sQuote{alpha}, as values of \sQuote{alpha} close to the mean dissimilarity
 of the matrix are likely to produce the most cliques and longest run time.  A
-solution for 1200 objects once took approximately 20 CPU days on a SparcStation.}
+solution for 1200 objects once took approximately 20 CPU days on a SparcStation.
+The example shown below (100 objects) runs in a few seconds on a modern computer.}
 
-\value{produces an list with elements:
+\value{produces a list with elements:
    \item{alphac}{the threshold value used to establish the cliques}
    \item{musubx}{a matrix of object membership in each of the maximal cliques}
    \item{member}{a list of members of each clique}
@@ -56,11 +57,12 @@ solution for 1200 objects once took approximately 20 CPU days on a SparcStation.
 }
 
 \examples{
-    data(shoshveg) # produces a vegetation dataframe
-    library(labdsv) # to get the dsvdis() function
-    dis.bc <- dsvdis(shoshveg,'bray/curtis') # produces a Bray/Curtis dissimilarity matrix
-    cli.50 <- clique(dis.bc,0.5) # clusters at 0.5 dissimilarity, likely to run for
-                                 # a few minutes in most PCs
-    summary(cli.50)
+data(shoshveg) # produces a vegetation dataframe
+library(labdsv) # to get the dsvdis() function
+dis.bc <- dsvdis(shoshveg,'bray/curtis') 
+          # produces a Bray/Curtis dissimilarity matrix
+cli.50 <- clique(dis.bc,0.5) # clusters at 0.5 dissimilarity, likely to run for
+          # a few seconds in most PCs
+summary(cli.50)
 }
 \keyword{cluster}

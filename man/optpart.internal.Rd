@@ -1,5 +1,4 @@
 \name{optpart.internal}
-\alias{partition}
 \alias{silhouette}
 \alias{opt.core}
 \alias{opts.core}

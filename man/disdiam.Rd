@@ -23,7 +23,7 @@ disdiam(x,dist,digits)
 \arguments{
 \item{x}{a vector of integers or an object of class \sQuote{clustering}, \sQuote{partition}, or
 \sQuote{stride}}
-\item{dist}{an object of class \sQuote{dist} from \code{dist},
+\item{dist}{an object of class \sQuote{dist} from \code{\link{dist}},
 \code{\link[labdsv]{dsvdis}}, or \code{\link[vegan]{vegdist}}}
 \item{digits}{the number of significant digits reported in the output}
 \item{\dots}{ancillary arguments to the print function}

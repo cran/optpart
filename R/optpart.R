@@ -51,11 +51,14 @@ optpart.default <- function(x, dist, maxitr = 100, mininc = 0.001, maxdmu = 1)
         out <- opt.core(dist,clustering,
             mininc=mininc,maxdmu=maxdmu,maxitr=maxitr)
     }
- 
+
     else if (is.numeric(x) && length(x) == 1) {
-        out <- opt.core(dist,sample(1:x,attr(dist,'Size'),
-            replace=TRUE),mininc=mininc,maxdmu=maxdmu,maxitr=maxitr)
+        size <- attr(dist,'Size')
+        tmp <- rep(1:x,((size-1))/x+1)[1:size]
+        tmp <- sample(tmp,size,replace=FALSE)
+        out <- opt.core(dist,tmp,mininc=mininc,maxdmu=maxdmu,maxitr=maxitr)
     }
+ 
     attr(out,"class") <- c("partana", "clustering")
     attr(out,'call') <- match.call()
     out

@@ -39,7 +39,7 @@ silhouette.stride <- function(x,dist,...)
 
 testsil <- function(sil)
 {
-    if (class(sil) != 'silhouette') stop('You must pass an object of class silhouette')
+    if (!inherits(sil,'silhouette')) stop('You must pass an object of class silhouette')
     tmp <- sil[sil[,3]<0,]
     tmp <- tmp[order(tmp[,1],tmp[,3]),]
     tmp

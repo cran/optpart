@@ -5,43 +5,46 @@
 \alias{partana.clustering}
 \alias{partana.stride}
 \alias{summary.partana}
-\alias{testpart}
+\alias{plot.partana}
 \title{Partition Analysis}
 \description{Partition analysis evaluates the within-cluster to among-cluster
 similarity of classifications as a measure of cluster validity}
 
-\usage{
-\method{partana}{default}(c, dist)
-\method{partana}{partition}(c, dist)
-\method{partana}{clustering}(c, dist)
+\usage{partana(c,dist)
 \method{summary}{partana}(object, \dots)
-testpart(part,ord=TRUE)
+\method{plot}{partana}(x,zlim=range(x$ptc),col=heat.colors(12),\dots)
 }
 
 \arguments{
     \item{c}{an integer or factor vector, or an object of class \sQuote{clustering},
-            \sQuote{partana}, \sQuote{partition}, \sQuote{stride}}
-    \item{dist}{an object of class \sQuote{dist}.  \sQuote{dist} is always necessary
-               unless you pass \sQuote{partana} an objects of class \sQuote{partition}
-                which contains an embedded \sQuote{dist} object.}
+            \sQuote{partana}, \sQuote{partition}, or \sQuote{stride}}
+    \item{dist}{an object of class \sQuote{dist} from functions \code{\link{dist}},
+           \code{\link{dsvdis}} or \code{\link[vegan]{vegdist}}}.  
     \item{object}{an object of class \sQuote{partana}}
-    \item{part}{an object of class \sQuote{partana}}
-    \item{ord}{a logical switch to control ordering of output}
-    \item{\dots}{ancillary arguments to pass to summary}
+    \item{x}{an object of class \sQuote{partana}}
+    \item{zlim}{the min and max values for the color map}
+    \item{col}{a color map name (heat.colors(12) is the default)}
+    \item{\dots}{ancillary arguments to pass to summary or plot}
 }
 \details{Calculates mean object-to-cluster similarity, mean cluster-to-cluster
 similarity, and mean within-cluster to among-cluster similarity.  partana operates
-on partitions or clustering produced by a wide range of algorithms, including specific 
-methods for the products of functions \code{\link[optpart]{optpart}}, \code{\link[optpart]{slice}}, 
-\code{\link[cluster]{pam}} and \code{\link[cluster]{diana}}.
+on partitions or clusterings produced by a wide range of algorithms, including specific 
+methods for the products of functions \code{\link{optpart}}, \code{\link{slice}}, 
+\code{\link{pam}} and \code{\link{diana}}.
 
 \code{summary} produces a matrix of the mean cluster-to-cluster similarities,
 and the overall within-cluster/among-cluster similarity ratio.
 
-\code{testpart} identifies \sQuote{misfits} in a partition, defined as items with
-lower dissimilarity to another cluster than to the one to which they belong.  
-The \sQuote{ord} switch re-orders the output in order of poor fit.
+\code{plot} plots two panels in sequence in the current device. The first shows
+the mean similarity of every object to each cluster, sorted by mean similarity
+to the other members of its own cluster, with objects as columns and clusters
+as rows. The second panel shows the mean similarity of every cluster to every
+other cluster and mean within-cluster similarity, ignoring cluster size. These
+plots are known as \sQuote{Mondriaan} plots, where the similarities are given by lines
+colored from min to max.  If the \sQuote{partana} object was produced by optpart, a
+third panel is plotted showing the trace of the optimization.  
 }
+
 
 \value{an object of class \sQuote{partana} with components:
 \item{ptc}{matrix of mean object-to-cluster similarity}
@@ -53,8 +56,8 @@ The \sQuote{ord} switch re-orders the output in order of poor fit.
     David W. Roberts
     \email{droberts@montana.edu}
 }
-\seealso{\code{\link[cluster]{partition}}, \code{optpart},
-         \code{plot.partana}}
+\seealso{\code{\link{partition}}, \code{\link{optpart}},
+         \code{\link{plot.partana}}}
 \examples{
     data(shoshveg)
     data(shoshsite)

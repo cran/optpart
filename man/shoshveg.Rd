@@ -10,7 +10,7 @@ random from a larger dataset.}
 match the \sQuote{shoshsite} dataset.
 
 The cover of all vascular plant species was recorded according to the
-following scale: present but $<$ 1\% = 0.1, 1-5\% = 0.5, 5-15\% = 1.0, 15-25\% =
+following scale: present but < 1\% = 0.1, 1-5\% = 0.5, 5-15\% = 1.0, 15-25\% =
 2.0, 25-35\% = 3.0, 35-45\% = 4.0, 45-55\% = 5.0, 55-65\% = 6.0, 65=75\% = 7.0,
 75-85\% = 8.0.  No species exhibited greater than 80\% cover in the data set.
 }

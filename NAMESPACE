@@ -1,0 +1,26 @@
+# Export all names
+export(archi,bestfit,classmatch,clique,clique.test,summary.clique,
+plot.clique,compare,confus,fuzconfus,consider,disdiam,disdiam.default,
+disdiam.clustering,disdiam.partition,disdiam.stride,print.disdiam,
+maxpact,mps.test,plot.mps,mergeclust,murdoch,plot.murdoch,
+summary.murdoch,neighbor,optindval,optpart,optpart.default,
+optpart.clustering,optpart.partana,optpart.partition,optpart.stride,
+bestopt,optsil,optsil.default,optsil.clustering,
+optsil.partana,optsil.partition,optsil.stride,opttdev,partana,
+partana.default,partana.partition,partana.clustering,partana.stride,
+plot.partana,summary.partana,partition,partition.partana,
+partition.clustering,phi,refine,refine.pco,refine.nmds,
+refine.default,reordclust,silhouette.partana,silhouette.clustering,
+silhouette.stride,slice,stride,plot.stride,extract,
+extract.stride,tabdev,tabdev.default,tabdev.stride,summary.tabdev,
+testopt,testpart,typal)
+
+# Import all packages listed as Imports or Depends
+import(
+  cluster,
+  labdsv,
+  MASS,
+  plotrix
+)
+
+useDynLib(optpart)

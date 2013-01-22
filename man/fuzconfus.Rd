@@ -7,15 +7,16 @@ classification tree, or other predictive model.  A fuzzy confusion
 matrix is a confusion matrix that corrects for \sQuote{near misses} 
 in prediction by comparing the similarity of the predicted type to
 the actual type and giving credit for the similarity.}
-\usage{fuzconfus(part,fitted,dis=NULL)}
+\usage{fuzconfus(part,fitted,dis)}
 \arguments{
     \item{part}{an object of class \sQuote{partana}, \sQuote{clustering}, or \sQuote{pam}
 a vector of (integer) class membership values}
     \item{fitted}{a matrix of probabilities of membership in classes, such
            as produced by \code{fitted} functions}
     \item{dis}{an object of class \sQuote{dist} such as produced by 
-             \sQuote{dist} \code{\link[labdsv]{dsvdis}}, or \code{\link[vegan]{vegdist}}
-             if \sQuote{part} does not contain a dissimilarity matrix, \sQuote{dis} must not be NULL}
+             \sQuote{dist} \code{\link[labdsv]{dsvdis}}, or \code{\link[vegan]{vegdist}}.
+             if \sQuote{part} is an object of class \sQuote{clustering} or \sQuote{'pam'}
+             argument \sQuote{dis} must be provided.}
 }
 \details{Cross-classifies each sample by actual class membership and
 predicted membership,  and then calculates the similarity of the predicted type to the actual.

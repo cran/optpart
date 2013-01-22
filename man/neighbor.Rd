@@ -40,7 +40,7 @@ David W. Roberts
 data(shoshveg)
 dis.bc <- dsvdis(shoshveg,'bray')
 opt.5 <- optpart(5,dis.bc)
-disdiam(opt.5,dis.bc)
+neighbor(opt.5)
 }
 
 \keyword{cluster}

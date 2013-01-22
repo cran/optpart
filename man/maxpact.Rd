@@ -1,15 +1,18 @@
 \name{maxpact}
 \alias{maxpact}
 \alias{mps.test}
+\alias{plot.mps}
 \title{Maximally Compact Sets Analysis}
 \description{Maximally compact sets is an approach to deriving relatively homogeneous
-subsets of objects as determined by similarity of the composition of the objects.  The sets
+subsets of objects as determined by similarity of the composition of the objects.  Maximally
+compact sets are a covering, as opposed to a partition, of objects.  The sets
 so derived can be tested against random sets of the same size to determine whether a
-vector of independent data exhibits a restricted distribution within the sets.
+vector of independent data exhibits an improbably restricted distribution within the sets.
 }
 \usage{
 maxpact(dist,size,alphac=0.01,mean=FALSE)
 mps.test(mps, env, main = deparse(substitute(env)), \dots)
+\method{plot}{mps}(x, \dots)
 }
 \arguments{
     \item{dist}{a dist object from \code{dist}, \code{dsvdis}, or \code{vegdist}}
@@ -20,6 +23,7 @@ mps.test(mps, env, main = deparse(substitute(env)), \dots)
     \item{mps}{an object of class \sQuote{mps}}
     \item{env}{a quantitative environmental variable for analysis}
     \item{main}{a title for the plot of mps.test}
+    \item{x}{an object of class \sQuote{mps} from maxpact}
     \item{\dots}{ancillary arguments for \sQuote{plot}}
 }
 \details{maxpact starts with each sample as a seed, and adds the most similar
@@ -35,7 +39,7 @@ deleted, to return the list of unique sets.
 If \sQuote{alphac} is specified, sets are grown to maximum size, or to maximum
 dissimilarity as specified by alphac, whichever is smaller.
 
-The \code{\link[optpart]{mps.test}} function analyzes within-set variability in attributes
+The \sQuote{mps.test} function analyzes within-set variability in attributes
 of the objects other than those used to calculate the similarity relation.  If maximally compact
 sets exhibit a narrower range of values than expected at random it may be that the
 variable analyzed has an underlying role in determining the attributes on which the similarity
@@ -45,6 +49,8 @@ range of values of random sets of the same size in black.  This followed by a bo
 within-set values for the random replicates versus the observed sets, and calculates a
 Wilcoxon rank sum test of the difference.
 }
+
+
 
 \value{an object of class \sQuote{mps}, a list with elements:
 \item{musubx}{a matrix of sample membership in the sets where membership is given by the
@@ -58,16 +64,14 @@ similarity with which a sample joined the set}
 	David W. Roberts
 	\email{droberts@montana.edu}
 }
-\seealso{
-\code{\link[optpart]{plot.mps}}
-}
 \examples{
     data(shoshveg)
     library(labdsv) # to get the dsvdis() function
     dis.bc <- dsvdis(shoshveg,'bray/curtis')
     mps.10 <- maxpact(dis.bc,10)
     data(shoshsite)
-    \dontrun{mps.test(mps.10,shoshsite$elevation)} # plots graph and produces summary
+    \dontrun{mps.test(mps.10,shoshsite$elevation)} 
+         # plots graph and produces summary
 }
 \keyword{cluster}
 

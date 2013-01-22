@@ -12,8 +12,8 @@ murdoch <- function (taxa,type,minval=0,minplt=10)
         second <- (nrow(taxa)-intype)/intype
         val <- log(first * second)
         prob <- rep(1,ncol(subtaxa))
-        prob[val>=0] <- 1 - phyper(pres,intype,outtype,tmp)[val>=0]
-        prob[val<0] <- 1 - phyper(abs,outtype,intype,tmp)[val<0]
+        prob[val>=0] <- 1 - phyper(pres-1,intype,outtype,tmp)[val>=0]
+        prob[val<0] <- 1 - phyper(abs-1,outtype,intype,tmp)[val<0]
         result <- list()
         result$minplt <- minplt
         result$nplots <- tmp

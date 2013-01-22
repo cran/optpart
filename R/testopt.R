@@ -1,4 +1,4 @@
-testopt <- function (part,ord=TRUE) 
+testopt <- function (part, ord=TRUE, digits=4, format='f') 
 {
     if (!inherits(part,'partana'))
         stop("you must pass an object of class partana")
@@ -9,7 +9,7 @@ testopt <- function (part,ord=TRUE)
     for (i in 1:nrow(ptc)) {
         if (clustering[i] != best[i]) {
             out <- rbind(out, c(i, part$names[i], clustering[i], 
-                best[i], formatC(ptc[i, ], digits = 4)))
+                best[i], formatC(ptc[i, ], digits = digits, format=format)))
         }
     }
     out <- data.frame(out, row.names = 1)

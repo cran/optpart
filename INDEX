@@ -1,17 +1,24 @@
 archi                   Archipelago Analysis
+bestfit			Identify the Goodness-of-Fit of Cluster Members
 bestopt                 Best Of Set Optimal Partitions From Random
                         Starts
 classmatch              Classification Matching and Differencing
 clique                  Maximal Clique Analysis
 clique.test             Clique Test
-clusplot.partana        Bi-variate Clusplot of a Partana Object
+clustering		Clustering Object
+compare			Compare Species Constancy for Specified Clusters
 confus                  Confusion Matrix
+consider		Recommendations for Possible Merging of Clusters
+disdiam			Dissimilarity Diameters of a Partition
+extract			Extract A Specific Cluster Solution From A Stride
 fuzconfus               Fuzzy Confusion Matrix
 isamic                  Indicator Species Analysis to Minimize
                         Intermediate Constancy
 maxpact                 Maximally Compact Sets Analysis
+mergeclust		Merge Specified Clusters in a Classification
 murdoch                 Indicator Species Analysis by Murdoch
                         Preference Function
+neighbor		Neighbor Analysis of Partitions
 optindval               Optimizing Classification by Maximizing Dufrene
                         and Legendre's Indicator Value
 optpart                 Optimal Partitioning of Dissimilarity/Distance
@@ -20,11 +27,15 @@ optsil                  Clustering by Optimizing Silhouette Widths
 opttdev                 Optimizing Classification by Minimizing Table
                         Deviance
 partana                 Partition Analysis
-partition.partana       Partition Analysis
+partition.clustering	Convert Object to Partition Object
+partition.partana       Convert Object to Partition Object
+phi			Calculating the phi Statistic on Taxon 
+			Classifications
 plot.mps                Plotting Maximally Compact Sets
 plot.partana            Plotting a Partition Analysis
 refine                  Refining a Classification by Re-Assigning
                         Memberships
+reordclust		Re-order Clusters in a Classification
 shoshsite               Site Data for the Shoshone National Forest,
                         Wyoming, USA
 shoshveg                Vascular Plant Species Cover for the Shoshone
@@ -38,3 +49,4 @@ tabdev                  Classification Validity Assessment by Table
                         Deviance
 testopt                 Identify Misclassified Plots in an Optpart
                         Classification
+typal			Identification of Typal Samples in a Partition

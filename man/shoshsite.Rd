@@ -6,7 +6,7 @@
 The coniferous forests of the Shoshone National Forest range from lower
 elevation woodlands dominated by \emph{Pinus flexilis}, through forests of \emph{
 Pseudotsuga menziesii, Pinus contorta, Picea engelmannii, Abies lasiocarpa} and
-\emph{Pinus albicaulis} with increasing elevation (Steele et al.\ 1983).  One
+\emph{Pinus albicaulis} with increasing elevation (Steele et al. 1983).  One
 hundred and fifty sample plots were chosen at random from a larger set for this
 data set; the larger set was stratified by elevation, exposure, surficial
 geology, and geographic distribution.}

@@ -53,7 +53,6 @@ c
       do 21 i=3,orig
         do 22 j=top,bottom
         if (point+2 > rows) then
-          write(6,*) ' trouble, point+2 = ',point+2
           orig = -1
           return
         endif

@@ -24,8 +24,10 @@ with the highest mean similarity to the cluster.
 
 \value{
 Returns a list with two data.frames.  The first, partana, gives the 
-clusters as rows and typal species as columns.  The second, silhouette,
-also gives the clusters as rows and typal species as columns.
+clusters as rows and typal samples as columns from the perspective of
+the partana ratio.  The second, silhouette,
+also gives the clusters as rows and typal samples as columns but from the perspective
+of silhouette widths.
 }
 
 \author{

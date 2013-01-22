@@ -1,7 +1,8 @@
 \name{partition}
+\alias{partition}
 \alias{partition.partana}
 \alias{partition.clustering}
-\title{Partition Analysis}
+\title{Convert Object to Partition Object}
 \description{Convert an object of class \sQuote{partana} or class \sQuote{clustering}
 to an object of class \sQuote{partition}.}
 
@@ -33,8 +34,8 @@ functions in that library are available.
     \email{droberts@montana.edu}
     \url{http://ecology.msu.montana.edu/labdsv/R/optpart}
 }
-\seealso{\code{\link[cluster]{silhouette}}, \code{\link[cluster]{partition}},
-\code{optpart}}
+\seealso{\code{\link{silhouette}}, \code{\link{partition}},
+\code{\link{optpart}}}
 \examples{
     data(shoshveg)
     dis.bc <- dsvdis(shoshveg,'bray/curtis')

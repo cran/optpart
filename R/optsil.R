@@ -88,7 +88,6 @@ optsil.partana <- function(x,dist,maxitr=100)
 
 optsil.partition <- function(x, dist, maxitr=100)
 {
-    print(maxitr)
     clustering <- x$clustering
     out <- opts.core(dist,clustering,maxitr)
     attr(out,'class') <- c('optsil', 'clustering') 
