@@ -6,6 +6,13 @@ refine <- function (x, clustering, ...)
 refine.pco <- function (x, clustering, ax=1, ay=2, ...) 
 {
     if (inherits(clustering,c('clustering','partana','partition'))) clustering <- clustering$clustering
+    if (is.numeric(clustering)) {
+        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+            cat('WARNING: renumbering clusters to consecutive integers\n')
+            clustering <- match(clustering,sort(unique(clustering)))
+        }
+    }
+
     for (i in 1:max(clustering)) {
         plot(x, ax, ay)
         cat(paste("Refining cluster # ", i, "\n"))
@@ -28,6 +35,11 @@ refine.pco <- function (x, clustering, ax=1, ay=2, ...)
 refine.nmds <- function (x, clustering, ax=1, ay=2, ...) 
 {
     if (inherits(clustering,c('clustering','partana','partition'))) clustering <- clustering$clustering
+    if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+        cat('WARNING: renumbering clusters to consecutive integers\n')
+        clustering <- match(clustering,sort(unique(clustering)))
+    }
+
     for (i in 1:max(clustering)) {
         plot(x, ax, ay)
         cat(paste("Refining cluster # ", i, "\n"))
@@ -52,6 +64,11 @@ refine.default <- function (x,clustering, ...)
     if (inherits(clustering,c('partana','clustering'))) {
         clustering <- clustering$clustering
     }
+    if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+        cat('WARNING: renumbering clusters to consecutive integers\n')
+        clustering <- match(clustering,sort(unique(clustering)))
+    }
+
     repeat {
         plots <- readline(' enter the plots    : ')
         if (plots == "") break

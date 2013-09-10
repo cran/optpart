@@ -95,7 +95,7 @@ c
    21   continue
       if (flag .eq. 0) then
         numset = numset + 1
-        do 23 j=1,numplt
+        do 23 j=1,maxsiz
         musuby(numset,j) = musubx(i,membrx(i,j))
         membry(numset,j) = membrx(i,j)
    23   continue

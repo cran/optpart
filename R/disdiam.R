@@ -6,6 +6,13 @@ disdiam <- function(x,dist,digits)
 disdiam.default <- function (x, dist, digits = 3)
 {
     clustering <- x
+    if (is.numeric(clustering)) {
+        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+            cat('WARNING: renumbering clusters to consecutive integers\n')
+            clustering <- match(clustering,sort(unique(clustering)))
+        }
+    }
+
     if (class(dist) != "dist")
         stop("The second argument must an object of class dist")
     dist <- as.matrix(dist)
@@ -30,6 +37,11 @@ disdiam.default <- function (x, dist, digits = 3)
 disdiam.clustering <- function (x,dist,digits=3) 
 {
     clustering <- x$clustering
+    if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+        cat('WARNING: renumbering clusters to consecutive integers\n')
+        clustering <- match(clustering,sort(unique(clustering)))
+    }
+
     if (class(dist) != 'dist') stop('The second argument must an object of class dist') 
     dist <- as.matrix(dist)
     nclustering <- as.numeric(clustering)

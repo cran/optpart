@@ -2,6 +2,13 @@ phi <- function (taxa,clustering,minplt=10)
 {
     if (inherits(clustering,c('clustering','partana','partition'))) 
         clustering <- clustering$clustering
+    if (is.numeric(clustering)) {
+        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+            cat('WARNING: renumbering clusters to consecutive integers\n')
+            clustering <- match(clustering,sort(unique(clustering)))
+        }
+    }
+
     N <- nrow(taxa)
     N.p <- table(clustering)
     numplt <- apply(taxa>0,2,sum)

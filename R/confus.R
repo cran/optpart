@@ -1,7 +1,14 @@
 confus <- function (clustering, fitted)
 {
-    if (inherits(clustering,c('clustering','partana','pam')))
+    if (inherits(clustering,c('clustering','partana','pam'))) 
         clustering <- clustering$clustering
+    if (is.numeric(clustering)) {
+        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+            cat('WARNING: renumbering clusters to consecutive integers\n')
+            clustering <- match(clustering,sort(unique(clustering)))
+        }
+     }
+
     if (is.factor(clustering)) 
         clustering <- as.numeric(clustering)
     if (is.logical(clustering))

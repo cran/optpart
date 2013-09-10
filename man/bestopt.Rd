@@ -26,7 +26,8 @@ assignment of items to clusters \sQuote{numitr} times, keeping the best result
 of the selected result.}
 }
 
-\note{This is a simple wrapper function to automate independent random starts of function \link[optpart]{optpart}.}
+\note{This is a simple wrapper function to automate independent random 
+starts of function \link[optpart]{optpart}.}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}

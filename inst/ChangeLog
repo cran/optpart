@@ -1,3 +1,7 @@
+optpart 2.1-1
+
+fixed a (benign) out of bounds error in maxpact
+
 optpart 2.1-0
 
 1) updated optpart to NAMESPACE format

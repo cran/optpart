@@ -1,6 +1,6 @@
 consider <- function (part) 
 {
-    if (!inherits(part,'partana')) stop('Must pass argument of clss partana')
+    if (!inherits(part,'partana')) stop('Must pass argument of class partana')
 
     ctc <- part$ctc
     vals <- part$ctc[row(part$ctc)>col(part$ctc)]
