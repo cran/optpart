@@ -56,6 +56,10 @@ optsil.default <- function(x,dist,maxitr=100)
 
     else if (is.numeric(x) && length(x) == nrow(as.matrix(dist))) { 
         clustering <- x
+        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+            cat('WARNING: renumbering clusters to consecutive integers\n')
+            clustering <- match(clustering,sort(unique(clustering)))
+        }
         out <- opts.core(dist,clustering,maxitr)
     }
 
@@ -71,6 +75,11 @@ optsil.default <- function(x,dist,maxitr=100)
 optsil.clustering <- function(x, dist, maxitr=100) 
 {
     clustering <- x$clustering
+    if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+        cat('WARNING: renumbering clusters to consecutive integers\n')
+        clustering <- match(clustering,sort(unique(clustering)))
+    }
+
     out <- opts.core(dist,clustering,maxitr)
     attr(out,'class') <- c('optsil','clustering')
     attr(out,'call') <- match.call()

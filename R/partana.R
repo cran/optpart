@@ -6,6 +6,12 @@ partana <- function (c, dist)
 partana.default <- function (c, dist) 
 {
     if (is.factor(c)) c <- as.numeric(c)
+    if (is.numeric(c)) {
+        if (min(c)< 0 || (length(table(c)) != max(c))) {
+            cat('WARNING: renumbering clusters to consecutive integers\n')
+            c <- match(c,sort(unique(c)))
+        }
+    }
     numclu <- max(c)
     call <- match.call()
     if (class(dist) != 'dist') {
@@ -89,6 +95,11 @@ partana.partition <- function (c,dist=NULL)
 
 partana.clustering <- function (c, dist) 
 {
+    if (min(c$clustering)< 0 || (length(table(c$clustering)) != max(c$clustering))) {
+        cat('WARNING: renumbering clusters to consecutive integers\n')
+        c$clustering <- match(c$clustering,sort(unique(c$clustering)))
+    }
+
     tmp <- matrix(0,nrow=length(c$clustering),ncol=length(c$clustering))
     out <- partana(c$clustering,dist)
     invisible(out)

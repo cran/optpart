@@ -25,6 +25,11 @@ partition.clustering <- function (x, dist, ...)
     if (!inherits(x,'clustering')) {
         stop("You must supply an object of class clustering as the first argument")
     }
+    if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+        cat('WARNING: renumbering clusters to consecutive integers\n')
+        clustering <- match(clustering,sort(unique(clustering)))
+    }
+
     if (class(dist) != 'dist') {
         stop("You must supply an object of class dist as the second argument")
     }

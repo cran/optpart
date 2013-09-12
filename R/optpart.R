@@ -48,6 +48,11 @@ optpart.default <- function(x, dist, maxitr = 100, mininc = 0.001, maxdmu = 1)
 
     else if (is.numeric(x) && length(x) == nrow(as.matrix(dist))) { 
         clustering <- x
+        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+            cat('WARNING: renumbering clusters to consecutive integers\n')
+            clustering <- match(clustering,sort(unique(clustering)))
+        }
+
         out <- opt.core(dist,clustering,
             mininc=mininc,maxdmu=maxdmu,maxitr=maxitr)
     }
@@ -67,6 +72,11 @@ optpart.default <- function(x, dist, maxitr = 100, mininc = 0.001, maxdmu = 1)
 optpart.clustering <- function(x,dist,maxitr=100,mininc=0.001,maxdmu=1)
 {
     clustering <- x$clustering  
+    if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
+        cat('WARNING: renumbering clusters to consecutive integers\n')
+        clustering <- match(clustering,sort(unique(clustering)))
+    }
+
     out <- opt.core(dist,clustering,mininc=mininc,
               maxdmu=maxdmu,maxitr=maxitr)
     attr(out,"class") <- c("partana", "clustering")

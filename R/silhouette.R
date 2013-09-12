@@ -16,6 +16,11 @@ silhouette.clustering <- function (x, dist, ...)
     if (!inherits(x,'clustering')) {
         stop("You must supply an object of class clustering as the first argument")
     }
+    if (min(x$clustering)< 0 || (length(table(x$clustering)) != max(x$clustering))) {
+        cat('WARNING: renumbering clusters to consecutive integers\n')
+        x$clustering <- match(x$clustering,sort(unique(x$clustering)))
+    }
+
     if (class(dist) != 'dist') {
         stop("You need to specify an object of class dist as the second argument")
     }

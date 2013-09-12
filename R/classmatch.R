@@ -1,7 +1,17 @@
 classmatch <- function (x,y,type='full') 
 {
     if (inherits(x,c('partana','clustering','partition'))) x <- x$clustering
+    if (min(x)< 0 || (length(table(x)) != max(x))) {
+        cat('WARNING: renumbering clusters to consecutive integers\n')
+        x <- match(x,sort(unique(x)))
+    }
+
     if (inherits(y,c('partana','clustering','partition'))) y <- y$clustering 
+    if (min(y)< 0 || (length(table(y)) != max(y))) {
+        cat('WARNING: renumbering clusters to consecutive integers\n')
+        y <- match(y,sort(unique(y)))
+    }
+
     tab <- table(x,y)
     total <- sum(tab)
 

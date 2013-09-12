@@ -12,8 +12,6 @@ consider		Recommendations for Possible Merging of Clusters
 disdiam			Dissimilarity Diameters of a Partition
 extract			Extract A Specific Cluster Solution From A Stride
 fuzconfus               Fuzzy Confusion Matrix
-isamic                  Indicator Species Analysis to Minimize
-                        Intermediate Constancy
 maxpact                 Maximally Compact Sets Analysis
 mergeclust		Merge Specified Clusters in a Classification
 murdoch                 Indicator Species Analysis by Murdoch
