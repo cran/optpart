@@ -27,7 +27,7 @@ indicator values}
 \note{Like many iterative re-assignment algorithms, optindval is likely to be
 VERY slow from a random start or poor initial condition.  optindval is maybe better
 used to polish existing classifications}
-\references{\url{http://ecology.montana.msu.edu/labdsv/R/labs}}
+\references{\url{http://ecology.msu.montana.edu/labdsv/R}}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}

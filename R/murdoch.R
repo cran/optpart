@@ -28,6 +28,8 @@ murdoch <- function (taxa,type,minval=0,minplt=10)
 
 plot.murdoch <- function (x,axtype=1,pval=0.05,...)
 {
+    if (class(x) != 'murdoch') 
+        stop("The first argument must be of class 'murdoch'")
     if (axtype==1) xval <- x$nplots else xval <- x$pres
 
     y <- x$murdoch
@@ -81,6 +83,8 @@ plot.murdoch <- function (x,axtype=1,pval=0.05,...)
 
 summary.murdoch <- function (object,pval=0.05,ndigits=3,...)
 {
+    if (class(object) != 'murdoch') 
+        stop("The first argument must be of class 'murdoch'")
     tmp <- data.frame(round(object$murdoch,ndigits),round(object$pval,ndigits))
     tmp <- tmp[object$pval<=pval,]
     names(tmp) <- c('murdoch','pval')

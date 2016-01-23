@@ -62,7 +62,7 @@ in types, regardless of their relative frequency in the type}
 \author{
     David W. Roberts with help from Ken Aho
     \email{droberts@montana.edu}
-    \url{http://ecology.msu.montana.edu/labdsv}
+    \url{http://ecology.msu.montana.edu/labdsv/R}
 }
 
 \seealso{\code{\link[labdsv]{indval}}, \code{\link[optpart]{tabdev}}}

@@ -26,7 +26,7 @@ PCO and NMDS ordinations, you do the assignments with a mouse.
 \item{clustering}{a numeric vector giving the cluster assignment for each
 sample}
 }
-\references{\url{http://ecology.montana.msu.edu/labdsv/R}}
+\references{\url{http://ecology.msu.montana.edu/labdsv/R}}
 \note{There are many, many ways to produce classifications in R, including
 several in package \sQuote{optpart}.  refine is designed to take one of these
 classifications and polish it by making relatively few transfers.  The

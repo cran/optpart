@@ -5,14 +5,12 @@ neighbor <- function (x, all = FALSE)
         if (!all) 
             tmp <- tmp[tmp[, 3] < 0, ]
         out <- table(tmp[, 1], tmp[, 2])
-    }
-    else if (inherits(x, "partana")) {
+    } else if (inherits(x, "partana")) {
         y <- x$clustering
         if (!all) {
             z <- apply(x$ptc,1,which.max)
             out <- table(y[y!=z],z[y!=z])
-        }
-        else {
+        } else {
             x <- x$ptc
             for (i in 1:nrow(x)) {
                 x[i,y[i]] <- NA
@@ -20,8 +18,8 @@ neighbor <- function (x, all = FALSE)
             z <- apply(x,1,which.max)
             out <- table(y,z) 
         }
+    } else {
+        stop("The first argument must be of class pam or partana")
     }
-    else stop("The first argument must be of class pam or optpart")
     out
 }
-

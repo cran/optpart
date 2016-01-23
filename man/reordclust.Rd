@@ -20,7 +20,7 @@ vector to the respective cluster number in the \sQuote{to} vector.
 }
 
 \value{an object of class \sQuote{clustering}}
-\references{\url{http://ecology.montana.msu.edu/labdsv/}}
+\references{\url{http://ecology.msu.montana.edu/labdsv/R}}
 \note{As demonstrated in the examples below, reordclass can also combine existing
 clusters into fewer clusters while reordering if more than one cluster in the 
 \sQuote{from} vector maps to the same cluster in the \sQuote{to} cluster.}

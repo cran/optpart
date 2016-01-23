@@ -9,7 +9,7 @@ where n is the number of elements in a classification.
 interface to functions in package \sQuote{cluster}.
 }
 
-\references{\url{http://ecology.montana.msu.edu/labdsv/}}
+\references{\url{http://ecology.msu.montana.edu/labdsv/R}}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}

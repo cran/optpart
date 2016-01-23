@@ -1,17 +1,14 @@
 \name{testpart}
-\alias{print.testpart}
 \alias{testpart}
 \title{Identify Misclassified Plots in a Partition}
 \description{testopt analyzes 
 the mean similarity of each sample to the cluster to which it is assigned to all 
 other clusters, and lists those samples which have similarity higher to another
 cluster than to the one to which they are assigned.}
-\usage{testpart(part,ord=TRUE,minval=0,digits=4)}
+\usage{testpart(part,ord=TRUE)}
 \arguments{
 	\item{part}{a object of class \sQuote{partana} from \code{partana} or  \code{optpart}} 
         \item{ord}{a switch to control whether the output is ordered}
-        \item{minval}{minimum difference to list in the output}
-	\item{digits}{how many digits to round to}
 }
 \details{Simply examines each sample plot, comparing the mean similarity of that 
 sample to all other samples in the cluster to which it is assigned as compared to its

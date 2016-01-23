@@ -12,7 +12,7 @@ similarity of classifications as a measure of cluster validity}
 
 \usage{partana(c,dist)
 \method{summary}{partana}(object, \dots)
-\method{plot}{partana}(x,zlim=range(x$ptc),col=heat.colors(12),\dots)
+\method{plot}{partana}(x,panel='all',zlim=range(x$ptc),col=heat.colors(12),\dots)
 }
 
 \arguments{
@@ -22,6 +22,7 @@ similarity of classifications as a measure of cluster validity}
            \code{\link{dsvdis}} or \code{\link[vegan]{vegdist}}}.  
     \item{object}{an object of class \sQuote{partana}}
     \item{x}{an object of class \sQuote{partana}}
+    \item{panel}{an integer switch to indicate which panel to draw}
     \item{zlim}{the min and max values for the color map}
     \item{col}{a color map name (heat.colors(12) is the default)}
     \item{\dots}{ancillary arguments to pass to summary or plot}

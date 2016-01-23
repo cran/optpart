@@ -5,13 +5,7 @@ partana <- function (c, dist)
 
 partana.default <- function (c, dist) 
 {
-    if (is.factor(c)) c <- as.numeric(c)
-    if (is.numeric(c)) {
-        if (min(c)< 0 || (length(table(c)) != max(c))) {
-            cat('WARNING: renumbering clusters to consecutive integers\n')
-            c <- match(c,sort(unique(c)))
-        }
-    }
+    c <- as.integer(clustify(c))
     numclu <- max(c)
     call <- match.call()
     if (class(dist) != 'dist') {
@@ -93,20 +87,11 @@ partana.partition <- function (c,dist=NULL)
     out
 }
 
-partana.clustering <- function (c, dist) 
-{
-    if (min(c$clustering)< 0 || (length(table(c$clustering)) != max(c$clustering))) {
-        cat('WARNING: renumbering clusters to consecutive integers\n')
-        c$clustering <- match(c$clustering,sort(unique(c$clustering)))
-    }
-
-    tmp <- matrix(0,nrow=length(c$clustering),ncol=length(c$clustering))
-    out <- partana(c$clustering,dist)
-    invisible(out)
-}
 
 partana.stride <- function(c,dist)
 {
+    if (class(c) != 'stride')
+        stop("The first argument must be of class 'stride'")
     res <- rep(NA,ncol(c$clustering))
     for (i in 1:ncol(c$clustering)) {
         res[i] <- partana(c$clustering[,i],dist)$ratio
@@ -117,7 +102,7 @@ partana.stride <- function(c,dist)
     out
 }
 
-plot.partana <- function(x,zlim=range(x$ptc),col=heat.colors(12), ...)
+plot.partana <- function(x,panel='all',zlim=range(x$ptc),col=heat.colors(12), ...)
 {
     numclu <- ncol(x$ptc)
     numplt <- nrow(x$ptc)
@@ -135,13 +120,19 @@ plot.partana <- function(x,zlim=range(x$ptc),col=heat.colors(12), ...)
             set <- rbind(set,tmp)
         } 
     }
-    image(seq(1:numplt),seq(1:numclu),set,zlim=zlim,col=col,
-        main="Plot-to-Set Similarity",xlab="Plots",ylab="Set")      
-    readline("Hit return to continue\n")
-    image(seq(1:numclu),seq(1:numclu),x$ctc,zlim=zlim,col=col,
-        main="Set-to-Set Similarity",xlab="Set",ylab="Set")
-    if (length(x$ratio) > 1) {
-        readline("Hit return to continue\n")
+    if (panel == 'all' || panel == 1) {
+        image(seq(1:numplt),seq(1:numclu),set,zlim=zlim,col=col,
+            main="Plot-to-Set Similarity",xlab="Plots",ylab="Set")      
+        if (panel == 'all') 
+            readline("Hit return to continue\n")
+    }
+    if (panel == 'all' || panel == 2) {
+        image(seq(1:numclu),seq(1:numclu),x$ctc,zlim=zlim,col=col,
+            main="Set-to-Set Similarity",xlab="Set",ylab="Set")
+        if ((panel == 'all' || panel ==3) && length(x$ratio) > 1) 
+            readline("Hit return to continue\n")
+    }
+    if ((panel == 'all' || panel ==3) && length(x$ratio) > 1) {
         plot(x$ratio,type='b')
     }
 }

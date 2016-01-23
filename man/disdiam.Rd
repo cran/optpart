@@ -1,8 +1,6 @@
 \name{disdiam}
 \alias{disdiam}
 \alias{disdiam.default}
-\alias{disdiam.clustering}
-\alias{disdiam.partition}
 \alias{disdiam.stride}
 \alias{print.disdiam}
 
@@ -14,15 +12,13 @@ clusters.}
 
 \usage{
 disdiam(x,dist,digits)
-\method{disdiam}{clustering}(x,dist,digits=3)
-\method{disdiam}{partition}(x,dist,digits=3)
 \method{disdiam}{stride}(x,dist,digits=3)
 \method{print}{disdiam}(x, \dots)
 }
 
 \arguments{
-\item{x}{a vector of integers or an object of class \sQuote{clustering}, \sQuote{partition}, or
-\sQuote{stride}}
+\item{x}{a vector of integers or an object of class \sQuote{clustering},
+\sQuote{partition}, \sQuote{partana}, or \sQuote{stride}}
 \item{dist}{an object of class \sQuote{dist} from \code{\link{dist}},
 \code{\link[labdsv]{dsvdis}}, or \code{\link[vegan]{vegdist}}}
 \item{digits}{the number of significant digits reported in the output}
@@ -49,10 +45,10 @@ David W. Roberts
 }
 
 \examples{
-data(shoshveg)
-dis.bc <- dsvdis(shoshveg,'bray')
-opt.5 <- optpart(5,dis.bc)
-disdiam(opt.5,dis.bc)
+    data(shoshveg)
+    dis.bc <- dsvdis(shoshveg,'bray')
+    opt.5 <- optpart(5,dis.bc)
+    disdiam(opt.5,dis.bc)
 }
 
 \keyword{cluster}

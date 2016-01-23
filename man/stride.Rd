@@ -1,7 +1,6 @@
 \name{stride}
 \alias{stride}
 \alias{plot.stride}
-\alias{silhouette.stride}
 \title{Stride: Producing a Sequence of Clusterings}
 
 \description{stride proceeds along a specified sequence creating clusterings or
@@ -10,7 +9,6 @@ partitions of a dissimilarity matrix for each value of the sequence.}
 \usage{
 stride(seq,arg2,type='pam',numrep=10,maxitr=100)
 \method{plot}{stride}(x, dist, col2=4, \dots)
-\method{silhouette}{stride}(x,dist,\dots)
 }
 \arguments{
 \item{seq}{a sequence, in either a:b or seq(a,b,c) form}
@@ -30,7 +28,7 @@ algorithm to produce clusters, and can be either \sQuote{pam} or \sQuote{optpart
 \item{dist}{an object of class \sQuote{dist} from \code{\link{dist}}, 
 \code{\link[labdsv]{dsvdis}}, or \code{\link[vegan]{vegdist}}}
 \item{col2}{the color code for the second line in the graph}
-\item{\dots}{ancillary arguments to the plot or silhouette functions}
+\item{\dots}{ancillary arguments to the plot function}
 }
 
 \details{
@@ -61,9 +59,9 @@ with one column for each value of the sequence}
 \author{David W. Roberts \email{droberts@montana.edu}}
 
 \examples{
-data(shoshveg)
-dis.bc <- dsvdis(shoshveg,'bray')
-results <- stride(2:5,dis.bc)
+    data(shoshveg)
+    dis.bc <- dsvdis(shoshveg,'bray')
+    results <- stride(2:5,dis.bc)
 }
 
 \keyword{cluster}

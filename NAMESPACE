@@ -1,19 +1,55 @@
 # Export all names
-export(archi,bestfit,classmatch,clique,clique.test,summary.clique,
+export(
+archi,bestfit,classmatch,clique,clique.test,summary.clique,clustify,
 plot.clique,compare,confus,fuzconfus,consider,disdiam,disdiam.default,
-disdiam.clustering,disdiam.partition,disdiam.stride,print.disdiam,
+disdiam.stride,print.disdiam,
 maxpact,mps.test,plot.mps,mergeclust,murdoch,plot.murdoch,
 summary.murdoch,neighbor,optindval,optpart,optpart.default,
-optpart.clustering,optpart.partana,optpart.partition,optpart.stride,
-bestopt,optsil,optsil.default,optsil.clustering,
-optsil.partana,optsil.partition,optsil.stride,opttdev,partana,
-partana.default,partana.partition,partana.clustering,partana.stride,
-plot.partana,summary.partana,partition,partition.partana,
-partition.clustering,phi,refine,refine.pco,refine.nmds,
+optpart.stride,
+bestopt,optsil,optsil.default,
+optsil.stride,opttdev,partana,
+partana.default,partana.partition,partana.stride,
+plot.partana,summary.partana,partition,
+phi,refine,refine.pco,refine.nmds,
 refine.default,reordclust,silhouette.partana,silhouette.clustering,
 silhouette.stride,slice,stride,plot.stride,extract,
 extract.stride,tabdev,tabdev.default,tabdev.stride,summary.tabdev,
-testopt,testpart,typal)
+testpart,testpart,typal
+)
+
+# register S3 Methods
+
+S3method(disdiam,default)
+S3method(disdiam,stride)
+S3method(extract,stride)
+S3method(optpart,default)
+S3method(optpart,stride)
+S3method(optsil,default)
+S3method(optsil,stride)
+S3method(partana,default)
+S3method(partana,partition)
+S3method(partana,stride)
+S3method(partition,default)
+S3method(plot,clique)
+S3method(plot,mps)
+S3method(plot,murdoch)
+S3method(plot,partana)
+S3method(plot,stride)
+S3method(print,disdiam)
+S3method(refine,default)
+S3method(refine,nmds)
+S3method(refine,pco)
+S3method(silhouette,clustering)
+S3method(silhouette,partana)
+S3method(silhouette,stride)
+S3method(summary,clique)
+S3method(summary,murdoch)
+S3method(summary,partana)
+S3method(summary,tabdev)
+S3method(tabdev,default)
+S3method(tabdev,stride)
+
+
 
 # Import all packages listed as Imports or Depends
 import(
@@ -22,5 +58,11 @@ import(
   MASS,
   plotrix
 )
+
+  importFrom("grDevices", "heat.colors")
+  importFrom("graphics", "abline", "axis", "boxplot", "identify",
+             "image", "lines", "locator", "mtext", "par", "plot",
+             "points")
+  importFrom("stats", "cutree", "kmeans", "phyper", "wilcox.test")
 
 useDynLib(optpart)

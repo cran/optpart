@@ -38,7 +38,7 @@ corresponding to those classes, and iterates.
 \sQuote{type=="full"}}
 }
 
-\references{\url{http://ecology.montana.msu.edu/labdsv/R/optpart/}}
+\references{\url{http://ecology.msu.montana.edu/labdsv/R}}
 
 \author{
     David W. Roberts

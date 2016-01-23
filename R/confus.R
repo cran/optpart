@@ -1,20 +1,9 @@
 confus <- function (clustering, fitted)
 {
-    if (inherits(clustering,c('clustering','partana','pam'))) 
-        clustering <- clustering$clustering
-    if (is.numeric(clustering)) {
-        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-            cat('WARNING: renumbering clusters to consecutive integers\n')
-            clustering <- match(clustering,sort(unique(clustering)))
-        }
-     }
+    clustering <- clustify(clustering)
 
-    if (is.factor(clustering)) 
-        clustering <- as.numeric(clustering)
-    if (is.logical(clustering))
-        clustering <- as.numeric(factor(clustering))
-    numplt<- length(clustering)
-    numclu <- length(table(clustering))
+    numplt <- length(clustering)
+    numclu <- length(levels(clustering))
     pred <- apply(fitted,1,which.max)
     res <- matrix(0,nrow=numclu,ncol=numclu)
     for (i in 1:numplt) {
@@ -30,17 +19,11 @@ confus <- function (clustering, fitted)
     out
 }
 
-fuzconfus <- function (part, fitted, dis=NULL)
+fuzconfus <- function (part, fitted, dis)
 {
-    if (inherits(part,'partana')) clustering <- part$clustering
-    else if (inherits(part,c('clustering','pam')) && !is.null(dis)) {
-        clustering <- part$clustering
-        part <- partana(clustering,dis)
-    }
-    else stop("you must supply an object of class 'partana' \n or an object of class 'clustering' or 'pam' AND an object of class 'dist'")
-
+    clustering <- clustify(part)
     numplt<- length(clustering)
-    numclu <- length(table(clustering))
+    numclu <- length(levels(clustering))
     pred <- apply(fitted,1,which.max)
     tmp <- part$ctc/diag(part$ctc)
     fuzerr <-  1- matrix(pmin(1,tmp),ncol=ncol(tmp))

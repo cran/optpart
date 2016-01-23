@@ -20,7 +20,7 @@ or \sQuote{clustering} and simplifes the syntax.
 \value{A list object of class \sQuote{clustering} specifying cluster membership for 
 every object.
 }
-\references{\url{http://ecology.montana.msu.edu/optpart/}}
+\references{\url{http://ecology.msu.montana.edu/labdsv/R}}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}

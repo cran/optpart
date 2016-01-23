@@ -5,22 +5,17 @@ disdiam <- function(x,dist,digits)
 
 disdiam.default <- function (x, dist, digits = 3)
 {
-    clustering <- x
-    if (is.numeric(clustering)) {
-        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-            cat('WARNING: renumbering clusters to consecutive integers\n')
-            clustering <- match(clustering,sort(unique(clustering)))
-        }
-    }
+    clustering <- clustify(x)
+    cname <- levels(clustering)
+    csize <- length(levels(clustering))
+    nclustering <- as.numeric(clustering)
 
     if (class(dist) != "dist")
         stop("The second argument must an object of class dist")
     dist <- as.matrix(dist)
-    nclustering <- as.numeric(clustering)
-    cname <- names(table(clustering))
-    csize <- as.numeric(table(clustering))
-    diam <- rep(0, length(table(clustering)))
-    for (i in 1:length(table(clustering))) {
+
+    diam <- rep(0, csize)
+    for (i in 1:csize) {
         pnt <- nclustering == i
         subdis <- dist[pnt, pnt]
         diam[i] <- max(subdis)
@@ -34,61 +29,10 @@ disdiam.default <- function (x, dist, digits = 3)
     out
 }
 
-disdiam.clustering <- function (x,dist,digits=3) 
-{
-    clustering <- x$clustering
-    if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-        cat('WARNING: renumbering clusters to consecutive integers\n')
-        clustering <- match(clustering,sort(unique(clustering)))
-    }
-
-    if (class(dist) != 'dist') stop('The second argument must an object of class dist') 
-    dist <- as.matrix(dist)
-    nclustering <- as.numeric(clustering)
-    cname <- names(table(clustering))
-    csize <- as.numeric(table(clustering))
-    diam <- rep(0,length(table(clustering)))
-
-    for (i in 1:length(table(clustering))) {
-        pnt <- nclustering == i
-        subdis <- dist[pnt,pnt]
-        diam[i] <- max(subdis)
-    }
-    diam <- as.numeric(format(diam,digits=digits,nsmall=digits))
-    res <- data.frame(cname,csize,diam)
-    names(res) <- c('cluster','N','diameter')
-    mean <- sum(res$N[res$N>1]*res$diameter[res$N>1])/sum(res$N[res$N > 1])
-    out <- list(diameters=res,mean=mean)
-    class(out) <- 'disdiam'
-    out
-}
-
-disdiam.partition <- function(x,dist,digits=3)
-{    
-    clustering <- x$clustering
-    if (class(dist) != 'dist') stop('The second argument must an object of class dist')
-    dist <- as.matrix(dist)
-    nclustering <- as.numeric(clustering)
-    cname <- names(table(clustering))
-    csize <- as.numeric(table(clustering))
-    diam <- rep(0,length(table(clustering)))
-
-    for (i in 1:length(table(clustering))) {
-        pnt <- nclustering == i
-        subdis <- dist[pnt,pnt]
-        diam[i] <- max(subdis)
-    }
-    diam <- as.numeric(format(diam,digits=digits,nsmall=digits))
-    res <- data.frame(cname,csize,diam)
-    names(res) <- c('cluster','N','diameter')
-    mean <- sum(res$N[res$N>1]*res$diameter[res$N>1])/sum(res$N[res$N > 1])
-    out <- list(diameters=res,mean=mean)
-    class(out) <- 'disdiam'
-    out
-}
-
 disdiam.stride <- function (x, dist, digits = 3)
 {
+    if (class(x) != 'stride') 
+        stop('You must pass an object of class stride')
     res <- rep(NA, ncol(x$clustering))
     dist <- as.matrix(dist)
     for (i in 1:ncol(x$clustering)) {

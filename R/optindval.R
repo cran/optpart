@@ -2,14 +2,7 @@ optindval <- function (veg,clustering,maxitr=100,minsiz=5)
 {
     numplt <- nrow(veg)
     numspc <- ncol(veg)
-    if (inherits(clustering, c("partana", "clustering", "partition"))) 
-        clustering = clustering$clustering
-    if (is.numeric(clustering)) {
-        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-            cat('WARNING: renumbering clusters to consecutive integers\n')
-            clustering <- match(clustering,sort(unique(clustering)))
-        }
-    }
+    clustering <- as.integer(clustify(clustering))
 
     numcls <- max(clustering)
     relfrq <- matrix(0,nrow=numspc,ncol=numcls)

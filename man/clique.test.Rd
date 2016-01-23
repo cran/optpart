@@ -8,17 +8,15 @@
     \item{minsize}{the minimum size clique to test for range}
     \item{plotit}{a switch to control plotting each clique individually}
 }
-\description{The \sQuote{clique.test} function analyzes within-clique variability in
-attributes of objects other than those used to calculate the
-similarity relation.  If the cliques exhibit a narrower
-range of values than expected at random it may be that the
-variable analyzed has an underlying role in determining the
-attributes on which the similarity is calculated.}
+\description{The \sQuote{clique.test} function analyzes within-clique
+variability in attributes of objects other than those used to calculate the
+similarity relation.  If the cliques exhibit a narrower range of values than
+expected at random it may be that the variable analyzed has an underlying role
+in determining the attributes on which the similarity is calculated.}
 
-\note{The \sQuote{clique.test} function actually calls the \code{\link[labdsv]{envrtest}}
-function once for each clique and stores the associated probability as determined by
-\code{\link[labdsv]{envrtest}}
-}
+\note{The \sQuote{clique.test} function actually calls the
+\code{\link[labdsv]{envrtest}} function once for each clique and stores the
+associated probability as determined by \code{\link[labdsv]{envrtest}} }
 
 \value{
 Produces a vector of probabilities, one for each clique that expresses the
@@ -31,5 +29,13 @@ produces a plot of the sorted probabilities on the current device.}
 \seealso{\code{\link[optpart]{clique}}, \code{\link[optpart]{mps.test}},
 \code{\link[labdsv]{envrtest}}
 }
+\examples{
+    data(shoshveg)
+    data(shoshsite)
+    dis.bc <- dsvdis(shoshveg,'bray')
+    \dontrun{cli.60 <- clique(dis.bc,0.60)}      # will run for several minutes
+    \dontrun{print(clique.test(cli.60,shoshsite$swb))}
+}
+    
 \keyword{hplot}
 \keyword{multivariate}

@@ -10,8 +10,8 @@ so derived can be tested against random sets of the same size to determine wheth
 vector of independent data exhibits an improbably restricted distribution within the sets.
 }
 \usage{
-maxpact(dist,size,alphac=0.01,mean=FALSE)
-mps.test(mps, env, main = deparse(substitute(env)), \dots)
+maxpact(dist,size=NULL,alphac=NULL,mean=FALSE)
+mps.test(mps, env, panel = 'all', main = deparse(substitute(env)), \dots)
 \method{plot}{mps}(x, \dots)
 }
 \arguments{
@@ -23,11 +23,13 @@ mps.test(mps, env, main = deparse(substitute(env)), \dots)
     \item{mps}{an object of class \sQuote{mps}}
     \item{env}{a quantitative environmental variable for analysis}
     \item{main}{a title for the plot of mps.test}
+    \item{panel}{an integer switch to indicate which panel to draw}
     \item{x}{an object of class \sQuote{mps} from maxpact}
     \item{\dots}{ancillary arguments for \sQuote{plot}}
 }
 \details{maxpact starts with each sample as a seed, and adds the most similar
-plot to the set.  Plots are added in turn to the set (up to the size specified)
+plot to the set.  Plots are added in turn to the set (up to the size specified,
+or tto the maximum dissimilarity specified)
 in order of maximum similarity.  If mean is FALSE, the sample most similar to
 set is the sample with the max-min similarity, that is, the sample whose minimum
 similarity to the set if highest, equivalent to furthest-neighbor or
@@ -66,7 +68,6 @@ similarity with which a sample joined the set}
 }
 \examples{
     data(shoshveg)
-    library(labdsv) # to get the dsvdis() function
     dis.bc <- dsvdis(shoshveg,'bray/curtis')
     mps.10 <- maxpact(dis.bc,10)
     data(shoshsite)

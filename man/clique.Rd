@@ -11,7 +11,7 @@ of the set is <= alpha-dissimilar to every other member.
 \usage{
 clique(dist,alphac,minsize=1,mult=100)
 \method{summary}{clique}(object, \dots)
-\method{plot}{clique}(x, \dots)
+\method{plot}{clique}(x, panel = 'all', \dots)
 }
 \arguments{
     \item{dist}{an object of class \sQuote{dist} from \code{\link{dist}},
@@ -22,6 +22,7 @@ clique(dist,alphac,minsize=1,mult=100)
     \item{object}{an object of class \sQuote{clique}}
     \item{\dots}{ancillary arguments to \code{summary} or \code{plot}}
     \item{x}{an object of class \sQuote{clique}}
+    \item{panel}{an integer switch to indicate which panel to plot}
 }
 \details{Maximal clique analysis produces a covering, as opposed to a partition,
 i.e. objects can belong to more than one clique, and every object belongs to at
@@ -53,16 +54,15 @@ The example shown below (100 objects) runs in a few seconds on a modern computer
 \author{
     David W. Roberts
     \email{droberts@montana.edu}
-    \url{http://ecology.msu.montana.edu/labdsv/R/optpart}
+    \url{http://ecology.msu.montana.edu/labdsv/R}
 }
 
 \examples{
-data(shoshveg) # produces a vegetation dataframe
-library(labdsv) # to get the dsvdis() function
-dis.bc <- dsvdis(shoshveg,'bray/curtis') 
+    data(shoshveg) # produces a vegetation dataframe
+    dis.bc <- dsvdis(shoshveg,'bray/curtis') 
           # produces a Bray/Curtis dissimilarity matrix
-cli.50 <- clique(dis.bc,0.5) # clusters at 0.5 dissimilarity, likely to run for
+    cli.50 <- clique(dis.bc,0.5) # clusters at 0.5 dissimilarity, likely to run for
           # a few seconds in most PCs
-summary(cli.50)
+    summary(cli.50)
 }
 \keyword{cluster}

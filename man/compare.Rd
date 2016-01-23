@@ -29,7 +29,7 @@ than the threshold appear in set \sQuote{both}.
   \item{right}{a data.frame of species diagnostic of set \sQuote{right}}
   \item{both}{species occuring in both sets and diagnostic of neither}
 }
-\references{\url{http://ecology.montana.msu.edu/labdsv/}}
+\references{\url{http://ecology.msu.montana.edu/labdsv/R}}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}

@@ -7,12 +7,11 @@
 to an object of class \sQuote{partition}.}
 
 \usage{
-\method{partition}{partana}(x, dist, \dots)
-\method{partition}{clustering}(x, dist, \dots)
+partition(x, dist, \dots)
 }
 
 \arguments{
-    \item{x}{an object of class \sQuote{partana} or \sQuote{clustering}}
+    \item{x}{an object which inherits from class \sQuote{clustering}}
     \item{dist}{an object of class \sQuote{dist}}
     \item{\dots}{ancillary arguments to pass to \sQuote{partition}}
 }
@@ -28,18 +27,18 @@ functions in that library are available.
           the number of clusters is non-trivial, i.e., \eqn{1 < k < n}.
           See \sQuote{silhouette}}
 }
-\references{\url{http://ecology.montana.msu.edu/optpart/}}
+\references{\url{http://ecology.msu.montana.edu/labdsv/R}}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}
-    \url{http://ecology.msu.montana.edu/labdsv/R/optpart}
+    \url{http://ecology.msu.montana.edu/labdsv/R}
 }
 \seealso{\code{\link{silhouette}}, \code{\link{partition}},
 \code{\link{optpart}}}
 \examples{
     data(shoshveg)
     dis.bc <- dsvdis(shoshveg,'bray/curtis')
-    \dontrun{part <- partana(sample(1:5,nrow(shoshveg),replace=TRUE),dis.bc)}
-    \dontrun{result <- partition(part,dis.bc)}
+    part <- partana(sample(1:5,nrow(shoshveg),replace=TRUE),dis.bc)
+    result <- partition(part,dis.bc)
 }
 \keyword{cluster}

@@ -40,28 +40,15 @@ optpart.default <- function(x, dist, maxitr = 100, mininc = 0.001, maxdmu = 1)
     }
     simptp <- 1 - as.matrix(dist)
 
-    if (is.factor(x)) {
-        clustering <- as.numeric(x)
-        out <- opt.core(dist,clustering,
-            mininc=mininc,maxdmu=maxdmu,maxitr=maxitr)
-    }
-
-    else if (is.numeric(x) && length(x) == nrow(as.matrix(dist))) { 
-        clustering <- x
-        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-            cat('WARNING: renumbering clusters to consecutive integers\n')
-            clustering <- match(clustering,sort(unique(clustering)))
-        }
-
-        out <- opt.core(dist,clustering,
-            mininc=mininc,maxdmu=maxdmu,maxitr=maxitr)
-    }
-
-    else if (is.numeric(x) && length(x) == 1) {
+    if (is.numeric(x) && length(x) == 1) {
         size <- attr(dist,'Size')
         tmp <- rep(1:x,((size-1))/x+1)[1:size]
         tmp <- sample(tmp,size,replace=FALSE)
         out <- opt.core(dist,tmp,mininc=mininc,maxdmu=maxdmu,maxitr=maxitr)
+    } else {
+        x <- as.numeric(clustify(x))
+        out <- opt.core(dist,x,
+            mininc=mininc,maxdmu=maxdmu,maxitr=maxitr)
     }
  
     attr(out,"class") <- c("partana", "clustering")
@@ -69,43 +56,11 @@ optpart.default <- function(x, dist, maxitr = 100, mininc = 0.001, maxdmu = 1)
     out
 }
 
-optpart.clustering <- function(x,dist,maxitr=100,mininc=0.001,maxdmu=1)
-{
-    clustering <- x$clustering  
-    if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-        cat('WARNING: renumbering clusters to consecutive integers\n')
-        clustering <- match(clustering,sort(unique(clustering)))
-    }
-
-    out <- opt.core(dist,clustering,mininc=mininc,
-              maxdmu=maxdmu,maxitr=maxitr)
-    attr(out,"class") <- c("partana", "clustering")
-    attr(out,'call') <- match.call()
-    out
-}
-
-optpart.partana <- function(x,dist,maxitr=100,mininc=0.001,maxdmu=1.0)
-{
-    clustering <- x$clustering
-    out <- opt.core(dist,clustering,mininc=mininc,
-              maxdmu=maxdmu,maxitr=maxitr)
-    attr(out,"class") <- c("partana", "clustering")
-    attr(out,'call') <- match.call()
-    out
-}
-
-optpart.partition <- function(x, dist, maxitr=100, mininc=0.001, maxdmu=1.0)
-{
-    clustering <- x$clustering
-    out <- opt.core(dist,clustering,mininc=mininc,
-              maxdmu=maxdmu,maxitr=maxitr)
-    attr(out,"class") <- c("partana", "clustering") 
-    attr(out,'call') <- match.call()
-    out
-}
 
 optpart.stride <- function(x,dist,maxitr=100,mininc=0.001,maxdmu=1.0)
 {
+    if (class(x) != 'stride')
+        stop('You must pass an object of class stride')
     res <- matrix(NA,nrow=nrow(x$clustering),ncol=ncol(x$clustering))
     for (i in 1:ncol(x$clustering)) {
         tmp <- opt.core(dist,x$clustering[,i],maxitr=maxitr,mininc=0.001,maxdmu=1.0)

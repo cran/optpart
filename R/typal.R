@@ -1,13 +1,6 @@
 typal <- function (clustering,dist,k=1)
 {
-    if (inherits(clustering, c("partana", "clustering", "partition")))
-        clustering <- clustering$clustering
-    if (is.numeric(clustering)) {
-        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-            cat('WARNING: renumbering clusters to consecutive integers\n')
-            clustering <- match(clustering,sort(unique(clustering)))
-        }
-    }
+    clustering <- as.integer(clustify(clustering))
     if (class(dist) != "dist" ) {
         stop("typal is not defined for classes other than dist")
     }

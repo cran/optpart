@@ -9,7 +9,7 @@ opts.core <- function (dist, clustering, maxitr = 100)
         stop('You must pass an object of classs dist as the first argument')
     if (max(dist) > 1) dist <- dist/max(dist)
     sim <- 1 - as.matrix(dist)
-    clustering <- as.numeric(factor(clustering))
+    clustering <- as.numeric(clustify(clustering))
     numplt <- length(clustering)
     numclu <- max(clustering)
     sils <- rep(0, maxitr)
@@ -46,66 +46,26 @@ opts.core <- function (dist, clustering, maxitr = 100)
 optsil.default <- function(x,dist,maxitr=100)
 {
     if (class(dist) != 'dist') {
-        stop('You must pass an object of class dist, clustering, partana or stride')
+        stop('You must pass an object of class dist')
     }
-
-    if (is.factor(x)) {
-        clustering <- as.numeric(clustering)
-        out <- opts.core(dist,clustering,maxitr)
-    }
-
-    else if (is.numeric(x) && length(x) == nrow(as.matrix(dist))) { 
-        clustering <- x
-        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-            cat('WARNING: renumbering clusters to consecutive integers\n')
-            clustering <- match(clustering,sort(unique(clustering)))
-        }
-        out <- opts.core(dist,clustering,maxitr)
-    }
-
-    else if (is.numeric(x) && length(x) == 1) {
+    
+    if (is.numeric(x) && length(x) == 1) {
         out <- opts.core(dist,sample(1:x,attr(dist,'Size'),
             replace=TRUE),maxitr)
-    }
-    attr(out,'class') <- c('optsil','clustering')
-    attr(out,'call') <- match.call()
-    out
-}
-
-optsil.clustering <- function(x, dist, maxitr=100) 
-{
-    clustering <- x$clustering
-    if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-        cat('WARNING: renumbering clusters to consecutive integers\n')
-        clustering <- match(clustering,sort(unique(clustering)))
+    } else {
+        clustering <- as.numeric(clustify(x))
+        out <- opts.core(dist,clustering,maxitr)
     }
 
-    out <- opts.core(dist,clustering,maxitr)
     attr(out,'class') <- c('optsil','clustering')
-    attr(out,'call') <- match.call()
-    out
-}
-
-optsil.partana <- function(x,dist,maxitr=100)
-{
-    clustering <- x$clustering
-    out <- opts.core(dist,clustering,maxitr)
-    attr(out,'class') <- c('optsil','clustering')
-    attr(out,'call') <- match.call()
-    out
-}
-
-optsil.partition <- function(x, dist, maxitr=100)
-{
-    clustering <- x$clustering
-    out <- opts.core(dist,clustering,maxitr)
-    attr(out,'class') <- c('optsil', 'clustering') 
     attr(out,'call') <- match.call()
     out
 }
 
 optsil.stride <- function(x,dist,maxitr=100)
 {
+    if (class(x) != 'stride') 
+        stop('You must pass an object of class stride')
     res <- matrix(NA,nrow=nrow(x$clustering),ncol=ncol(x$clustering))
     for (i in 1:ncol(x$clustering)) {
         tmp <- opts.core(dist,x$clustering[,i],maxitr)
@@ -119,4 +79,3 @@ optsil.stride <- function(x,dist,maxitr=100)
     attr(out,'call') <- match.call()
     out
 }
-

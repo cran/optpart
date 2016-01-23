@@ -1,5 +1,9 @@
 clique <- function (dist,alphac,minsize=1,mult=100) 
 {
+     if (class(dist) != 'dist') 
+         stop("The first argument must be of class 'dist'") 
+     if (alphac < 0 || alphac > 1) 
+         stop("alphac must be [0,1]")
      sim <- 1-as.matrix(dist)
      rows <- mult * nrow(sim)
      cols <- ncol(sim)
@@ -22,8 +26,7 @@ clique <- function (dist,alphac,minsize=1,mult=100)
     if (tmp$orig < 0) {
          print('Memory overflow.  Increase parameter mult and try again')
          out <- NULL
-    }
-    else {
+    } else {
          musubx <- 1 - matrix(tmp$ds,ncol=cols)[tmp$top:tmp$bottom,]
          test <- apply(musubx,1,sum) >= minsize 
          musubx <- musubx[test,]
@@ -46,8 +49,10 @@ clique.test <- function (cliq,env,minsize=2,plotit=FALSE)
         else probs[i] <- envrtest(cliq$musubx[i,],env,plotit=plotit)$prob
         if (plotit) readline('hit return to continue')
     }
-    plot(sort(probs))
-    abline(h=0.05,col=2)
+    if (plotit) {
+        plot(sort(probs))
+        abline(h=0.05,col=2)
+    }
     invisible(probs)
 }
 
@@ -61,9 +66,14 @@ summary.clique <- function(object,...)
     cat(paste('maximum size = ',maxsize,"\n"))
 }
 
-plot.clique <- function(x, ...)
+plot.clique <- function(x, panel='all', ...)
 {
-    plot(sort(apply(x$musubx>0,1,sum)),xlab='clique',ylab='size')
-    readline('hit return to continue : ')
-    plot(sort(apply(x$musubx>0,2,sum)),xlab='plot',ylab='number of cliques')
+    if (panel == 'all' || panel == 1) {
+        plot(sort(apply(x$musubx>0,1,sum)),xlab='clique',ylab='size')
+        if (panel == 'all')
+            readline('hit return to continue : ')
+    }
+    if (panel == 'all' || panel == 2) {
+        plot(sort(apply(x$musubx>0,2,sum)),xlab='plot',ylab='number of cliques')
+    }
 }

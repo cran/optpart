@@ -29,7 +29,7 @@ as calculated by \code{\link{tabdev}}.  See the help file for
 \note{Like many iterative re-assignment algorithms, opttdev is likely to be
 VERY slow from a random start or poor initial condition.  opttdev is maybe better
 used to polish existing classifications}
-\references{\url{http://ecology.montana.msu.edu/labdsv/R/labs}}
+\references{\url{http://ecology.msu.montana.edu/labdsv/R}}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}

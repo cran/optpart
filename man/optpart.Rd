@@ -82,7 +82,7 @@ non-zero value is the final ratio achieved.}
 \author{
 	David W. Roberts
 	\email{droberts@montana.edu}
-	\url{http://ecology.msu.montana.edu/labdsv/R/optpart}
+	\url{http://ecology.msu.montana.edu/labdsv/R}
 }
 \seealso{
 \code{partana}

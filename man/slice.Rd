@@ -20,7 +20,7 @@ graphic device.}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}
-    \url{http://ecology.msu.montana.edu/optpart}
+    \url{http://ecology.msu.montana.edu/labdsv/R}
 }
 \seealso{\code{\link[labdsv]{ordpart}}
 }

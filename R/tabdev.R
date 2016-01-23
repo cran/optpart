@@ -7,14 +7,8 @@ tabdev <- function(x,...)
 tabdev.default <- function(x,clustering,nitr=999,...)
 {
     if (!is.data.frame(x)) x <- data.frame(x)
-    if (inherits(clustering, c('clustering','partana','partition')))
-        clustering <- clustering$clustering
-    else if (is.factor(clustering))
-        clustering <- as.numeric(clustering)
-    if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-        cat('WARNING: renumbering clusters to consecutive integers\n')
-        clustering <- match(clustering,sort(unique(clustering)))
-    }
+    clustering <- as.integer(clustify(clustering))
+
     pltspc <- apply(x>0,2,sum)
     numplt <- nrow(x)
     numspc <- ncol(x)

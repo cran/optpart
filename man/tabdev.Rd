@@ -48,12 +48,12 @@ where $m$ is the number of cases with as low or lower deviance as observed.
 \author{
 	David W. Roberts
 	\email{droberts@montana.edu}
-	\url{http://ecology.msu.montana.edu/R/optpart}
+	\url{http://ecology.msu.montana.edu/labdsv/R}
 }
 \examples{
-	data(shoshveg)
-        dis.bc <- dsvdis(shoshveg,'bray/curtis')
-        opt.5 <- optpart(5,dis.bc)
-        tabdev(shoshveg,opt.5)
+    data(shoshveg)
+    dis.bc <- dsvdis(shoshveg,'bray/curtis')
+    opt.5 <- optpart(5,dis.bc)
+    tabdev(shoshveg,opt.5)
 }
 \keyword{cluster}

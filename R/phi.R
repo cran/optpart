@@ -1,13 +1,8 @@
 phi <- function (taxa,clustering,minplt=10) 
 {
-    if (inherits(clustering,c('clustering','partana','partition'))) 
-        clustering <- clustering$clustering
-    if (is.numeric(clustering)) {
-        if (min(clustering)< 0 || (length(table(clustering)) != max(clustering))) {
-            cat('WARNING: renumbering clusters to consecutive integers\n')
-            clustering <- match(clustering,sort(unique(clustering)))
-        }
-    }
+    clustering <- clustify(clustering)
+    names.out <- levels(clustering)
+    clustering <- as.numeric(clustering)
 
     N <- nrow(taxa)
     N.p <- table(clustering)
@@ -25,6 +20,6 @@ phi <- function (taxa,clustering,minplt=10)
      }
      out <- data.frame(out)
      row.names(out) <- names(taxa)
-     names(out) <- as.character(1:length(N.p))
+     names(out) <- names.out
      out
 }

@@ -37,10 +37,10 @@ David W. Roberts
 }
 
 \examples{
-data(shoshveg)
-dis.bc <- dsvdis(shoshveg,'bray')
-opt.5 <- optpart(5,dis.bc)
-neighbor(opt.5)
+    data(shoshveg)
+    dis.bc <- dsvdis(shoshveg,'bray')
+    opt.5 <- optpart(5,dis.bc)
+    neighbor(opt.5)
 }
 
 \keyword{cluster}

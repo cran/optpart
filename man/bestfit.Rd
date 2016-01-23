@@ -19,7 +19,7 @@ functions in package \sQuote{cluster})
 \value{returns a data.frame with cluster members in column \sQuote{ID} and goodness-of-fit 
 in column \sQuote{fit}
 }
-\references{\url{http://ecology.montana.msu.edu/labdsv/}}
+\references{\url{http://ecology.msu.montana.edu/labdsv/}}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}
@@ -30,6 +30,7 @@ in column \sQuote{fit}
     data(shoshveg)                      # returns vegetation matrix
     dis.bc <- dsvdis(shoshveg,'bray')   # Bray/Curtis dissimilarity matrix 
     opt.5 <- optpart(5,dis.bc)          # 5 cluster partition
+    print(class(opt.5))
     fit <- bestfit(opt.5,1)             # goodness-of-fit for cluster 1
     sil.5 <- silhouette(opt.5,dis.bc)   # calculate silhouette widths
     fit2 <- bestfit(sil.5,1)            # goodness-of-fit for cluster 1

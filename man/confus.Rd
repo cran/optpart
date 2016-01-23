@@ -28,7 +28,7 @@ predictive methods of class membership or factors.}
 \author{
     David W. Roberts
     \email{droberts@montana.edu}
-    \url{http://ecology.msu.montana.edu/labdsv/R/optpart}
+    \url{http://ecology.msu.montana.edu/labdsv/R}
 }
 \examples{
     data(shoshveg) # returns a data frame of vegetation data
