@@ -23,6 +23,7 @@ c
       integer membrx(numplt,numplt)
       double precision mnsimi(numplt)
       double precision maxsim
+      double precision temsim
       integer maxpnt
       integer flag
       integer i,j,k
@@ -38,6 +39,7 @@ c
       musubx(i,i) = 1.0
       mnsimi(1) = 0.0
       membrx(i,1) = i
+      maxpnt = 0
 c
         do 12 j=2,maxsiz
         maxsim = 0.0

@@ -1,3 +1,9 @@
+optpart 2.3-0
+
+changes a number of REAL*4 constants to REAL*8 (and other
+simple changes) to avoid warnings from gfortan -pedantic
+
+
 optpart 2.1-1
 
 fixed a (benign) out of bounds error in maxpact

@@ -1,4 +1,4 @@
-1f509f566a02a409a8339c148de35375 *DESCRIPTION
+e4aab1d7370cfa467dd219ae9ad20166 *DESCRIPTION
 1fe253b7914798c02ee0d943a345de23 *NAMESPACE
 dce7850aef45b9666b5e8693631669f3 *R/archi.R
 a34b5bcbbf3cc89b3312ef0b35d6cc93 *R/bestfit.R
@@ -30,7 +30,7 @@ c9503a6182bf2ff3e4cde35232e0d8bb *R/testpart.R
 fd47d1172b522003e5b01c63a3ca4a0e *R/typal.R
 56815db34bb8f1a571f84b3b1425cb68 *data/shoshsite.rda
 45fd2247e4a710505d0ed7befdd7fb49 *data/shoshveg.rda
-5be2b008e7c8d3528acd887cf84d608d *inst/ChangeLog
+11d07a44ba3b5126e690463504da9a21 *inst/ChangeLog
 1d3390bc6916839a5571e48a3af4fac4 *man/archi.Rd
 209c03dd1c986e881535de17b7aab4b6 *man/bestfit.Rd
 880d80ddac47790721e9540c4c51c394 *man/bestopt.Rd
@@ -68,13 +68,13 @@ d067db94bb2894e8f32ddb0461edb32d *man/partana.Rd
 83a5c1fa747fec61227ea45c36be37ed *man/typal.Rd
 ec29a50bb14644c3e483851e39b51b35 *src/archi.f
 62ef633edc21a1904313516f798e8f47 *src/clcdev.f
-8949356d4187d9a272f6972a2d433967 *src/clcdul.f
+447649197688fd8834b931344ea62135 *src/clcdul.f
 3ca2d20484ff51d621024f4750bb000d *src/clique.f
-687c1993da558cb5c70ad07b574202f6 *src/maxpact.f
-09468e3c9411b7cfc5abc7271e2602d9 *src/optindval.f
-1c7e572ce1e075da654838a90cc208c2 *src/optpart.f
-439e1d24a3d1e5a6adb119c0373d2dd3 *src/optsil.f
-832b68a09c55aff5ace410e1f7bf812b *src/opttdev.f
-18e948a9352bea4c702cac2cc451c715 *src/permute.f
+16f7bc8564b361bfde31e3bd0851e24b *src/maxpact.f
+a7ceec25fc0d8b0f50d1bd394d962ba6 *src/optindval.f
+965387714a5cbdeffc3ff4e4b824be4e *src/optpart.f
+89ed398e7287b0014f91d0ec65233852 *src/optsil.f
+de1390bf41d5a9910969781081770ada *src/opttdev.f
+79a92532afa4822a904e5e0cb3731dd9 *src/permute.f
 c878da0c9e6f4bf574431b61d3ffff84 *src/random.c
 64931ef22d1651007c88aaa2b2f31fc5 *src/tabdev.f

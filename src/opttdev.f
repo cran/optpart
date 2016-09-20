@@ -44,6 +44,8 @@ c
 c
       do 19 k=1,maxitr
       flag = 0
+      mvefrm = 0
+      moveto = 0
         do 10 i=1,numplt
           do 11 j=1,numplt
           tmpclu(j) = clusid(j)

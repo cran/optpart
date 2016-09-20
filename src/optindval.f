@@ -55,9 +55,15 @@ c
       clstab(clusid(i)) = clstab(clusid(i)) + 1
    17 continue
 c
+      mvefrm = 0
+      moveto = 0
+      plttrn = 0
       do 19 k=1,maxitr
       flag = 0
         do 10 i=1,numplt
+          mvefrm = 0
+          moveto = 0
+          plttrn = 0
           do 11 j=1,numplt
           tmpclu(j) = clusid(j)
   11      continue

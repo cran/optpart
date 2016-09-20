@@ -22,9 +22,9 @@ c
 c
 c* local 
 c* 
-      real maxval
-      real totveg
-      real sumrab
+      double precision maxval
+      double precision totveg
+      double precision sumrab
 c
 c*********************************** one *********************************
 c

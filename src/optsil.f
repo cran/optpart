@@ -89,6 +89,7 @@ c
 c* local
 c
       double precision maxsim
+      double precision a,b
 c
       do 10 i=1,numplt
       maxsim = 0.0

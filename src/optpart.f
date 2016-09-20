@@ -27,7 +27,7 @@ c
 c
       common / numer /  sumswi,sumsbt,sumcwi,sumcbt
 c  
-      character*1 rorc
+      character rorc*1
 c
 c* local
 c
@@ -217,6 +217,13 @@ c
 c
       common / numer /  sumswi,sumsbt,sumcwi,sumcbt
 c
+c
+c* local
+c
+      double precision weight
+      double precision simwis
+      double precision simbts
+c
 c* dsv_fcl/ratio ************** one **********************************
 c          
       sumswi = 0.0
@@ -262,7 +269,7 @@ c
       double precision musubx(numplt,numclu)
       double precision maxdmu
       double precision cardin(numclu)
-      character*1 rorc
+      character rorc*1
 c
 c* common numer
 c
@@ -289,6 +296,7 @@ c
       double precision tmpmax
       integer pltdif(maxclu,maxclu)
       integer pltnum
+      double precision summu
 c
 c* dsv_fcl/deltam ********** one **********************************
 c
@@ -398,6 +406,10 @@ c
       integer numclu
       double precision musubx(numplt,numclu)
       double precision cardin(numclu)
+c
+c* local
+c
+      double precision total
 c
 c* dsv_fcl/calcar ************** one ******************************
 c

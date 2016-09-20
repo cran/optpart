@@ -4,12 +4,12 @@ c
       integer class(numplt)
       integer pclass(numplt)
 c
-      double precision unifrnd
-c
 c* local
 c
       integer tclass(numplt)
       integer pool
+      integer index
+      double precision unifrnd
 c
       call rndstart()
 c
@@ -19,14 +19,13 @@ c
    10 continue
 c
       do 11 i=1,numplt
-c     index = rand()*(pool)+1
-      index = unifrnd()*pool+1
+      index = ceiling(unifrnd()*(pool))
       pclass(i) = tclass(index)
       tclass(index) = tclass(pool)
       pool = pool - 1
    11 continue
 c
-      call rndend()
+      call rndend
 c
       return
 c
