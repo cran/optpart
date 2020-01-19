@@ -60,10 +60,10 @@ third panel is plotted showing the trace of the optimization.
 \seealso{\code{\link{partition}}, \code{\link{optpart}},
          \code{\link{plot.partana}}}
 \examples{
-    data(shoshveg)
-    data(shoshsite)
-    dis.bc <- dsvdis(shoshveg,'bray/curtis')
-    demo.part <- partana(cut(shoshsite$elev,5),dis.bc)
-    summary(demo.part)
+data(shoshveg)
+data(shoshsite)
+dis.bc <- dsvdis(shoshveg,'bray/curtis')
+demo.part <- partana(cut(shoshsite$elev,5),dis.bc)
+summary(demo.part)
 }
 \keyword{cluster}

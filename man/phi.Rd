@@ -4,14 +4,16 @@
 \description{Calculates the \eqn{phi} statistic on a classified 
 table of taxa}
 \usage{
-phi(taxa,clustering,minplt=10)
+phi(comm,clustering,minplt=10,p.adjust=FALSE)
 }
 \arguments{
-\item{taxa}{a data.frame with samples as rows and attributes as columns}
+\item{comm}{a data.frame with samples as rows and attributes as columns}
 \item{clustering}{a vector of integers or an object of class \sQuote{clustering},
 \sQuote{partition}, or \sQuote{partana}}
 \item{minplt}{the minimum number of samples a species must occur in to be included 
 in the calculation}
+\item{p.adjust}{switch to control adjusting probabilities for simultaneous inference 
+by Hochberg correction}
 }
 
 \details{\eqn{phi} is a statistic of agreement between two vectors.  In this case
@@ -41,10 +43,10 @@ David W. Roberts
 }
 
 \examples{
-    data(shoshveg)
-    dis.bc <- dsvdis(shoshveg,'bray')
-    opt.5 <- optpart(5,dis.bc)
-    phi(shoshveg,opt.5)
+data(shoshveg)
+dis.bc <- dsvdis(shoshveg,'bray')
+opt.5 <- optpart(5,dis.bc)
+phi(shoshveg,opt.5)
 }
 
 \keyword{htest}

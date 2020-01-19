@@ -26,15 +26,15 @@ produces a plot of the sorted probabilities on the current device.}
 \author{
     David W. Roberts \email{droberts@montana.edu}
 }
-\seealso{\code{\link[optpart]{clique}}, \code{\link[optpart]{mps.test}},
+\seealso{\code{\link[optpart]{clique}}, \code{\link[optpart]{mss.test}},
 \code{\link[labdsv]{envrtest}}
 }
 \examples{
-    data(shoshveg)
-    data(shoshsite)
-    dis.bc <- dsvdis(shoshveg,'bray')
-    \dontrun{cli.60 <- clique(dis.bc,0.60)}      # will run for several minutes
-    \dontrun{print(clique.test(cli.60,shoshsite$swb))}
+data(shoshveg)
+data(shoshsite)
+dis.bc <- dsvdis(shoshveg,'bray')
+\dontrun{cli.60 <- clique(dis.bc,0.60)}             # will run for several
+\dontrun{print(clique.test(cli.60,shoshsite$swb))}  # minutes
 }
     
 \keyword{hplot}

@@ -12,8 +12,9 @@ stride(seq,arg2,type='pam',numrep=10,maxitr=100)
 }
 \arguments{
 \item{seq}{a sequence, in either a:b or seq(a,b,c) form}
-\item{arg2}{an object of class \sQuote{dist} from \code{\link{dist}},
-\code{\link[labdsv]{dsvdis}} or \code{\link[vegan]{vegdist}} among other
+\item{arg2}{an object of class \sQuote{dist} from 
+\code{\link{dist}}, \code{\link[labdsv]{dsvdis}} or 
+\code{\link[vegan]{vegdist}} among other
 sources, or of class \sQuote{hclust}}
 \item{type}{if arg2 is an object of class \sQuote{dist}, type specifies the
 algorithm to produce clusters, and can be either \sQuote{pam} or \sQuote{optpart}.}
@@ -59,9 +60,9 @@ with one column for each value of the sequence}
 \author{David W. Roberts \email{droberts@montana.edu}}
 
 \examples{
-    data(shoshveg)
-    dis.bc <- dsvdis(shoshveg,'bray')
-    results <- stride(2:5,dis.bc)
+data(shoshveg)
+dis.bc <- dsvdis(shoshveg,'bray')
+results <- stride(2:5,dis.bc)
 }
 
 \keyword{cluster}

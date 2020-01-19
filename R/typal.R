@@ -1,11 +1,10 @@
 typal <- function (clustering,dist,k=1)
 {
     clustering <- as.integer(clustify(clustering))
-    if (class(dist) != "dist" ) {
-        stop("typal is not defined for classes other than dist")
-    }
-    classes <- 1:length(table(clustering))
+    if (!inherits(dist,'dist')) 
+        stop("The second argument must be of class 'dist'")
 
+    classes <- 1:length(table(clustering))
     part <- partana(clustering,dist)
     sil <- silhouette(clustering,dist)
 

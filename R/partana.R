@@ -8,8 +8,8 @@ partana.default <- function (c, dist)
     c <- as.integer(clustify(c))
     numclu <- max(c)
     call <- match.call()
-    if (class(dist) != 'dist') {
-        stop('you must supply an object of class dist')
+    if (!inherits(dist,'dist')) {
+        stop("The second argument must be an object of class 'dist'")
     }
     x <- (max(1,max(dist)) - as.matrix(dist)) / max(1,max(dist))
     num <- 0
@@ -70,7 +70,8 @@ partana.default <- function (c, dist)
                 clustering = c, distname=distname, names=attr(dist,'Labels'))
     attr(out,"call") <- call
     attr(out,"class") <- "partana"
-    invisible(out)
+    attr(out,'timestamp') <- date()
+    out
 }
 
 partana.partition <- function (c,dist=NULL)
@@ -137,6 +138,7 @@ plot.partana <- function(x,panel='all',zlim=range(x$ptc),col=heat.colors(12), ..
     }
 }
  
+
 summary.partana <- function (object, ...) 
 {
     cat(paste("Number of clusters = ", nrow(object$ctc), "\n"))
@@ -162,3 +164,28 @@ summary.partana <- function (object, ...)
     }
 }
 
+
+print.partana <- function (x, ...) 
+{
+    cat(paste("Number of clusters = ", nrow(x$ctc), "\n"))
+    print(table(x$clustering))
+    cat("\n")
+    if (nrow(x$ctc) < 11) {
+        print(x$ctc)
+    }
+    else {
+        cat("Mean Within-cluster similarities\n\n")
+        for (i in 1:nrow(x$ctc)) {
+            cat(paste(i, format(x$ctc[i, i], digits = 4), 
+                "\n"))
+        }
+    }
+    if (length(x$ratio) > 1) {
+        cat(paste("\nRatio of Within-cluster similarity/Among-cluster similarity = ",
+             format(x$ratio[x$numitr],digits=4),"in",x$numitr,"iterations\n"))
+    }
+    else {
+        cat(paste("\nRatio of Within-cluster similarity/Among-cluster similarity = ",
+            format(x$ratio,digits=4),"\n"))
+    }
+}

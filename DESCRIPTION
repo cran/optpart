@@ -1,6 +1,5 @@
 Package: optpart
-Version: 2.3-0
-Date: 2016-09-20
+Version: 3.0-3
 Title: Optimal Partitioning of Similarity Relations
 Author: David W. Roberts <droberts@montana.edu>
 Maintainer: David W. Roberts <droberts@montana.edu>
@@ -17,6 +16,6 @@ Description: Contains a set of algorithms for creating
 License: GPL (>= 2)
 URL: http://ecology.msu.montana.edu/labdsv/R
 NeedsCompilation: yes
-Packaged: 2016-09-20 15:25:30 UTC; dvrbts
+Packaged: 2020-01-17 13:31:54 UTC; dvrbts
 Repository: CRAN
-Date/Publication: 2016-09-20 18:46:42
+Date/Publication: 2020-01-19 17:10:02 UTC

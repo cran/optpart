@@ -1,7 +1,7 @@
-optindval <- function (veg,clustering,maxitr=100,minsiz=5) 
+optindval <- function (comm,clustering,maxitr=100,minsiz=5) 
 {
-    numplt <- nrow(veg)
-    numspc <- ncol(veg)
+    numplt <- nrow(comm)
+    numspc <- ncol(comm)
     clustering <- as.integer(clustify(clustering))
 
     numcls <- max(clustering)
@@ -17,7 +17,7 @@ optindval <- function (veg,clustering,maxitr=100,minsiz=5)
     numitr <- 0
     tmpclu <- rep(0,numplt)
     res <- .Fortran('optindval',
-                   as.double(as.matrix(veg)),
+                   as.double(as.matrix(comm)),
                    as.integer(numplt),
                    as.integer(numspc),
                    clustering = as.integer(clustering),
@@ -35,10 +35,12 @@ optindval <- function (veg,clustering,maxitr=100,minsiz=5)
                    numitr = as.integer(numitr),
                    as.integer(tmpclu),
                    PACKAGE='optpart')
-    out <- indval(veg,res$clustering)
+    out <- indval(comm,res$clustering)
     out$clustering <- res$clustering
     out$sums <- res$sums[1:res$numitr]
     out$numitr <- res$numitr
     class(out) <- c('optindval','clustering')
+    attr(out,'call') <- match.call()
+    attr(out,'timestamp') <- date()
     return(out)
 }

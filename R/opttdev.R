@@ -1,9 +1,9 @@
-opttdev <- function (veg,clustering,maxitr=100,minsiz=5) 
+opttdev <- function (comm,clustering,maxitr=100,minsiz=5) 
 {
     clustering <- as.numeric(clustify(clustering))
 
-    numplt <- nrow(veg)
-    numspc <- ncol(veg)
+    numplt <- nrow(comm)
+    numspc <- ncol(comm)
     numcls <- length(table(clustering))
     sums <- rep(0,maxitr+1)
     numitr <- 0
@@ -12,7 +12,7 @@ opttdev <- function (veg,clustering,maxitr=100,minsiz=5)
     spcsum <- rep(0,numspc)
     tmpclu <- rep(0,numplt)
     tmp <- .Fortran('opttdev',
-                    as.double(as.matrix(veg)),
+                    as.double(as.matrix(comm)),
                     as.integer(numplt),
                     as.integer(numspc),
                     clusid = as.integer(clustering),
@@ -31,5 +31,7 @@ opttdev <- function (veg,clustering,maxitr=100,minsiz=5)
     out$numitr = tmp$numitr
     out$clustering <- tmp$clusid
     class(out) <- c('opttdev','clustering')
+    attr(out,'call') <- match.call()
+    attr(out,'timestamp') <- date()
     return(out)
 }

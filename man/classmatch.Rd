@@ -49,11 +49,11 @@ corresponding to those classes, and iterates.
           \code{\link[optpart]{slice}}}
 
 \examples{
-    data(shoshveg)
-    dis.bc <- dsvdis(shoshveg,'bray/curtis')
-    opt.5 <- optpart(5,dis.bc)
-    pam.5 <- pam(dis.bc,5)
-    classmatch(opt.5,pam.5)
+data(shoshveg)
+dis.bc <- dsvdis(shoshveg,'bray/curtis')
+opt.5 <- optpart(5,dis.bc)
+pam.5 <- pam(dis.bc,5)
+classmatch(opt.5,pam.5)
 }
 
 \keyword{cluster}

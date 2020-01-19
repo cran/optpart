@@ -1,3 +1,17 @@
+optpart 3.0-2
+
+This is fairly major upgrade to optpart.  
+
+1) The Fortran code was converted to f90, Several new routines were
+added
+
+2) several new routines were added
+
+   2.1) optimclass - find best partition solution by indicator species
+   2.2) gensilwidth - generalized mean silhouette width routine
+   2.3) gamma - Goodman's gamma clustering validity
+   2.4) flexbeta - flexible beta clustering
+
 optpart 2.3-0
 
 changes a number of REAL*4 constants to REAL*8 (and other

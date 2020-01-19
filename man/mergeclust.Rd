@@ -28,10 +28,11 @@ every object.
 \seealso{\code{\link[cluster]{partition}}, \code{\link[optpart]{partana}}, and 
 \code{\link[optpart]{clustering}}}
 \examples{
-    data(shoshveg)                # returns a vegetation data.frame
-    dis.bc <- dsvdis(shoshveg,'bray/curtis')   # returns a Bray/Curtis 
-                                               # dissimilarity matrix
-    opt.5 <- optpart(5,dis.bc)    # five cluster partition
-    opt.5a <- mergeclust(opt.5,5,4)  # reassigns member form cluster 5 to 4
+data(shoshveg)                   # returns a vegetation data.frame
+dis.bc <- dsvdis(shoshveg,'bray/curtis')   # returns a Bray/Curtis 
+                                 # dissimilarity matrix
+opt.5 <- optpart(5,dis.bc)       # five cluster partition
+opt.5a <- mergeclust(opt.5,5,4)  # reassigns member from cluster 
+                                 #   5 to 4
 }
 \keyword{clustering}

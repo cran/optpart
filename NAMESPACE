@@ -1,27 +1,27 @@
 # Export all names
 export(
 archi,bestfit,classmatch,clique,clique.test,summary.clique,clustify,
-plot.clique,compare,confus,fuzconfus,consider,disdiam,disdiam.default,
-disdiam.stride,print.disdiam,
-maxpact,mps.test,plot.mps,mergeclust,murdoch,plot.murdoch,
+plot.clique,compare,confus,consider,disdiam,disdiam.default,
+disdiam.stride,print.disdiam,print.murdoch,
+maxsimset,mss.test,mergeclust,murdoch,plot.murdoch,
 summary.murdoch,neighbor,optindval,optpart,optpart.default,
 optpart.stride,
 bestopt,optsil,optsil.default,
 optsil.stride,opttdev,partana,
 partana.default,partana.partition,partana.stride,
 plot.partana,summary.partana,partition,
-phi,refine,refine.pco,refine.nmds,
-refine.default,reordclust,silhouette.partana,silhouette.clustering,
-silhouette.stride,slice,stride,plot.stride,extract,
-extract.stride,tabdev,tabdev.default,tabdev.stride,summary.tabdev,
-testpart,testpart,typal
-)
+phi,refine,
+reordclust,silhouette.partana,silhouette.clustering,
+silhouette.stride,slice,stride,plot.stride,extract,getsets,
+extract.stride,getsets.mss,tabdev,tabdev.default,tabdev.stride,summary.tabdev,
+testpart,typal,lambda,gensilwidth,optimclass,flexbeta)
 
 # register S3 Methods
 
 S3method(disdiam,default)
 S3method(disdiam,stride)
 S3method(extract,stride)
+S3method(getsets,mss)
 S3method(optpart,default)
 S3method(optpart,stride)
 S3method(optsil,default)
@@ -31,20 +31,19 @@ S3method(partana,partition)
 S3method(partana,stride)
 S3method(partition,default)
 S3method(plot,clique)
-S3method(plot,mps)
+S3method(plot,mss)
 S3method(plot,murdoch)
 S3method(plot,partana)
 S3method(plot,stride)
 S3method(print,disdiam)
-S3method(refine,default)
-S3method(refine,nmds)
-S3method(refine,pco)
+S3method(refine,dsvord)
 S3method(silhouette,clustering)
 S3method(silhouette,partana)
 S3method(silhouette,stride)
 S3method(summary,clique)
 S3method(summary,murdoch)
 S3method(summary,partana)
+S3method(print,murdoch)
 S3method(summary,tabdev)
 S3method(tabdev,default)
 S3method(tabdev,stride)
@@ -63,6 +62,7 @@ import(
   importFrom("graphics", "abline", "axis", "boxplot", "identify",
              "image", "lines", "locator", "mtext", "par", "plot",
              "points")
-  importFrom("stats", "cutree", "kmeans", "phyper", "wilcox.test")
+  importFrom("stats", "cutree", "kmeans", "phyper", "wilcox.test",
+             "fisher.test", "predict", "as.hclust")
 
 useDynLib(optpart)

@@ -1,17 +1,18 @@
-murdoch <- function (taxa,type,minval=0,minplt=10)
+murdoch <- function (comm,type,minval=0,minplt=10)
 {
+        type <- as.logical(clustify(type))
         if (!is.logical(type)) stop('The second argument must be of type logical')
-        tmp <- apply(taxa>minval,2,sum)
-        subtaxa <- taxa[,tmp>=minplt]
+        tmp <- apply(comm>minval,2,sum)
+        subcomm <- comm[,tmp>=minplt]
         tmp <- tmp[tmp>=minplt]
-        pres <- apply(subtaxa[type,]>0,2,sum)
-        abs <- apply(subtaxa[!type,]>0,2,sum)
+        pres <- apply(subcomm[type,]>0,2,sum)
+        abs <- apply(subcomm[!type,]>0,2,sum)
         intype <- sum(type)
-        outtype <- nrow(taxa) - intype
+        outtype <- nrow(comm) - intype
         first <- pres/abs
-        second <- (nrow(taxa)-intype)/intype
+        second <- (nrow(comm)-intype)/intype
         val <- log(first * second)
-        prob <- rep(1,ncol(subtaxa))
+        prob <- rep(1,ncol(subcomm))
         prob[val>=0] <- 1 - phyper(pres-1,intype,outtype,tmp)[val>=0]
         prob[val<0] <- 1 - phyper(abs-1,outtype,intype,tmp)[val<0]
         result <- list()
@@ -23,6 +24,8 @@ murdoch <- function (taxa,type,minval=0,minplt=10)
         result$murdoch <- val
         result$pval <- prob
         class(result) <- "murdoch"
+        attr(result,'call') <- match.call()
+        attr(result,'timestamp') <- date()    
         result
 }
 
@@ -75,19 +78,27 @@ plot.murdoch <- function (x,axtype=1,pval=0.05,...)
     points(xval[y<0 & x$pval<=pval],y[y<0 & x$pval<=pval],pch="-")
     points(xval[x$pval>pval],y[x$pval>pval],pch=1)
 
-    test <- readline('Do you want to identify particular species (Y or N) : ')
-    if (test=='Y' || test == 'y') {
-        identify(xval,y,names(x$pres))
+    if (interactive()) {
+        test <- readline('Do you want to identify particular species (Y or N) : ')
+        if (test=='Y' || test == 'y') {
+            identify(xval,y,names(x$pres))
+        }
     }
 }
 
-summary.murdoch <- function (object,pval=0.05,ndigits=3,...)
+summary.murdoch <- function (object,pval=0.05,digits=3,...)
 {
     if (class(object) != 'murdoch') 
         stop("The first argument must be of class 'murdoch'")
-    tmp <- data.frame(round(object$murdoch,ndigits),round(object$pval,ndigits))
+    tmp <- data.frame(round(object$murdoch,digits),round(object$pval,digits))
     tmp <- tmp[object$pval<=pval,]
     names(tmp) <- c('murdoch','pval')
     print(tmp[rev(order(tmp$murdoch)),])
 }
 
+print.murdoch <- function(x,digits=5,...)
+{
+    out <- data.frame(x$murdoch,round(x$pval,digits))
+    names(out) <- c('murdoch_value','pval')
+    out
+}

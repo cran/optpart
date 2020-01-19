@@ -30,10 +30,10 @@ If \sQuote{ord=TRUE} then the output is ordered to reflect target clusters.
 \code{\link{partana}}, \code{\link{partana}}, \code{\link{silhouette}}
 }
 \examples{
-    data(shoshveg)
-    dis.bc <- dsvdis(shoshveg,'bray/curtis')
-    opt.5 <- optpart(5,dis.bc)
-    testpart(opt.5)
+data(shoshveg)
+dis.bc <- dsvdis(shoshveg,'bray/curtis')
+opt.5 <- optpart(5,dis.bc)
+testpart(opt.5)
 }
 \keyword{cluster}
 

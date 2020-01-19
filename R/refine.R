@@ -1,65 +1,44 @@
-refine <- function (x, clustering, ...) 
-{
+refine <- function (x, clustering, ...)
+{ 
    UseMethod("refine")
 }
 
-refine.pco <- function (x, clustering, ax=1, ay=2, ...) 
+refine.dsvord <- function (x, clustering, ax=1, ay=2, ...)
 {
+    if (!inherits(x,'dsvord'))
+        stop("The first argument must be an object of class 'dsvord'")
     clustering <- as.integer(clustify(clustering))
 
     for (i in 1:max(clustering)) {
         plot(x, ax, ay)
         cat(paste("Refining cluster # ", i, "\n"))
-        hilight(x, clustering, ax, ay)
-        chullord(x, clustering == i, ax, ay, col = i + 1)
-        new <- plotid(x)
+        cols <- rep(8,max(clustering))
+        cols[i] <- i+1
+        hilight(x, clustering, ax, ay, col=cols)
+        chullord(x, clustering == i, ax, ay, col = cols)
+        new <- identify(x$points[,ax],x$points[,ay])
         clustering[new] <- i
-        points(x, clustering == i, ax, ay, col = i + 1)
     }
-    plot(x, ax, ay)
     hilight(x, clustering, ax, ay)
-    for (i in 1:max(clustering)) {
-        chullord(x, clustering == i, ax, ay, col = i + 1)
-    }
+    chullord(x, clustering == i, ax, ay)
     out <- list(clustering=clustering)
     attr(out, "class") <- "clustering"
-    return(out)
+    attr(out,'call') <- match.call()
+    attr(out,'timestamp') <- date()
+    out
 }
 
-refine.nmds <- function (x, clustering, ax=1, ay=2, ...) 
+refine.default <- function (comm,clustering, ...)
 {
     clustering <- as.integer(clustify(clustering))
 
-    for (i in 1:max(clustering)) {
-        plot(x, ax, ay)
-        cat(paste("Refining cluster # ", i, "\n"))
-        hilight(x, clustering, ax, ay)
-        chullord(x, clustering == i, ax, ay, col = i + 1)
-        new <- plotid(x)
-        clustering[new] <- i
-        points(x, clustering == i, ax, ay, col = i + 1)
-    }
-    plot(x, ax, ay)
-    hilight(x, clustering, ax, ay)
-    for (i in 1:max(clustering)) {
-        chullord(x, clustering == i, ax, ay, col = i + 1)
-    }
-    out <- list(clustering=clustering)
-    attr(out, "class") <- "clustering"
-    return(out)
-}
-
-refine.default <- function (x,clustering, ...) 
-{
-    clustering <- as.integer(clustify(clustering))
- 
     repeat {
         plots <- readline(' enter the plots    : ')
         if (plots == "") break
         new <- as.numeric(readline(' New cluster        : '))
         for (i in strsplit(plots,",")[[1]]){
-            ord <- 1:nrow(x)
-            y <- match(i,row.names(x))
+            ord <- 1:nrow(comm)
+            y <- match(i,row.names(comm))
             if (!is.na(y)) {
                 clustering[y] <- new
             }
@@ -68,6 +47,8 @@ refine.default <- function (x,clustering, ...)
     }
     out <- list(clustering=clustering)
     class(out) <- 'clustering'
-    out 
+    attr(out,'call') <- match.call()
+    attr(out,'timestamp') <- date()
+    out
 }
 

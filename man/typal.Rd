@@ -31,10 +31,10 @@ of silhouette widths.
 }
 
 \examples{
-    data(shoshveg)
-    dis.bc <- dsvdis(shoshveg,'bray')
-    opt.5 <- bestopt(dis.bc,5,20)
-    typal(opt.5,dis.bc,3)
+data(shoshveg)
+dis.bc <- dsvdis(shoshveg,'bray')
+opt.5 <- bestopt(dis.bc,5,20)
+typal(opt.5,dis.bc,3)
 }
 
 

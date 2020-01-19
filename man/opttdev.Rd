@@ -4,9 +4,9 @@
 \description{opttdev is a iterative re-assignment classification algorithm
 that assigns samples to clusters to minimize the total deviance of a table
 with respect to the row-wise relative abundance of the elements}
-\usage{opttdev(veg,clustering,maxitr=100,minsiz=5)}
+\usage{opttdev(comm,clustering,maxitr=100,minsiz=5)}
 \arguments{
-    \item{veg}{a vegetation or other taxon table with samples as rows and taxa as columns}
+    \item{comm}{a vegetation or other taxon table with samples as rows and taxa as columns}
     \item{clustering}{an index of cluster membership for each sample. May be either
                       a numeric vector of length equal to the number of samples, or
                       an object that inherits from class \sQuote{cluster}}
@@ -37,10 +37,11 @@ used to polish existing classifications}
 \seealso{\code{\link{optpart}}, \code{\link{optindval}}, \code{\link{optsil}}
 }
 \examples{
-    \dontrun{data(shoshveg)} # returns a data.frame of vegetation
-    \dontrun{# data called shoshveg}
-    \dontrun{res <- opttdev(shoshveg,sample(1:5,nrow(shoshveg),replace=TRUE))} 
-    \dontrun{# likely to be VERY slow}
+\dontrun{data(shoshveg)} # returns a data.frame of vegetation
+\dontrun{data(shoshsite)}
+\dontrun{res <- opttdev(shoshveg,
+                  as.numeric(cut(shoshsite$elevation,5)))} 
+\dontrun{# likely to be VERY slow}
 }
 \keyword{cluster}
 

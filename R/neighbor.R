@@ -19,7 +19,7 @@ neighbor <- function (x, all = FALSE)
             out <- table(y,z) 
         }
     } else {
-        stop("The first argument must be of class pam or partana")
+        stop("The first argument must be of class 'pam' or 'partana'")
     }
     out
 }

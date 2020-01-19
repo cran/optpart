@@ -58,11 +58,11 @@ The example shown below (100 objects) runs in a few seconds on a modern computer
 }
 
 \examples{
-    data(shoshveg) # produces a vegetation dataframe
-    dis.bc <- dsvdis(shoshveg,'bray/curtis') 
-          # produces a Bray/Curtis dissimilarity matrix
-    cli.50 <- clique(dis.bc,0.5) # clusters at 0.5 dissimilarity, likely to run for
-          # a few seconds in most PCs
-    summary(cli.50)
+data(shoshveg) # produces a vegetation dataframe
+dis.bc <- dsvdis(shoshveg,'bray/curtis') 
+    # produces a Bray/Curtis dissimilarity matrix
+cli.50 <- clique(dis.bc,0.5) # clusters at 0.5 dissimilarity, likely
+    # to run for a few seconds in most PCs
+summary(cli.50)
 }
 \keyword{cluster}

@@ -88,10 +88,10 @@ non-zero value is the final ratio achieved.}
 \code{partana}
 }
 \examples{
-    data(shoshveg)
-    dis.bc <- dsvdis(shoshveg,'bray/curtis')
-    opt.5 <- optpart(5,dis.bc)
-    summary(opt.5)
+data(shoshveg)
+dis.bc <- dsvdis(shoshveg,'bray/curtis')
+opt.5 <- optpart(5,dis.bc)
+summary(opt.5)
 }
 \keyword{cluster}
 

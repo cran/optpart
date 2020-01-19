@@ -2,19 +2,21 @@
 \alias{murdoch}
 \alias{summary.murdoch}
 \alias{plot.murdoch}
+\alias{print.murdoch}
 
 \title{Indicator Species Analysis by Murdoch Preference Function}
 \description{Calculates the indicator value 
 of species in a single cluster or environment type using the Murdoch Preference Function}
 
 \usage{
-murdoch(taxa,type,minval=0,minplt=10)
-\method{summary}{murdoch}(object,pval=0.05,ndigits=3,\dots)
+murdoch(comm,type,minval=0,minplt=10)
+\method{summary}{murdoch}(object,pval=0.05,digits=3,\dots)
 \method{plot}{murdoch}(x,axtype=1,pval=0.05,\dots)
+\method{print}{murdoch}(x,digits = 5, ...)
 }
 
 \arguments{
-    \item{taxa}{a matrix or data.frame of samples with species as columns and
+    \item{comm}{a matrix or data.frame of samples with species as columns and
                samples as rows}
     \item{type}{a logical vector with values of TRUE for samples in a specific cluster
                  or type}
@@ -22,7 +24,7 @@ murdoch(taxa,type,minval=0,minplt=10)
     \item{minplt}{the minimum number of presences to include a species in the calculation}
     \item{object}{and object of class \sQuote{murdoch}}
     \item{pval}{the maximum probability to include a species in the summary table}
-    \item{ndigits}{the number of digits to report}
+    \item{digits}{the number of digits to report}
     \item{\dots}{ancillary arguments to maintain compatibility with the generic summary function}
     \item{x}{an object of class \sQuote{murdoch}}
     \item{axtype}{a switch to control scaling of the x axis in the plot.  1=number of plots in the 
@@ -68,9 +70,10 @@ in types, regardless of their relative frequency in the type}
 \seealso{\code{\link[labdsv]{indval}}, \code{\link[optpart]{tabdev}}}
 
 \examples{
-    data(shoshveg) # returns a vegetation dataframe
-    dis.bc <- dsvdis(shoshveg,'bray/curtis') # returns a dissimilarity matrix
-    clust <- optpart(5,dis.bc)
-    murdoch(shoshveg,clust$clustering==1)
+data(shoshveg)                           # returns a vegetation dataframe
+dis.bc <- dsvdis(shoshveg,'bray/curtis') # returns a dissimilarity 
+                                         #   matrix
+opt.5 <- optpart(5,dis.bc)
+plot(murdoch(shoshveg,opt.5$clustering==1))
 }
 \keyword{cluster}

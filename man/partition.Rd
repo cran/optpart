@@ -36,9 +36,9 @@ functions in that library are available.
 \seealso{\code{\link{silhouette}}, \code{\link{partition}},
 \code{\link{optpart}}}
 \examples{
-    data(shoshveg)
-    dis.bc <- dsvdis(shoshveg,'bray/curtis')
-    part <- partana(sample(1:5,nrow(shoshveg),replace=TRUE),dis.bc)
-    result <- partition(part,dis.bc)
+data(shoshveg)
+dis.bc <- dsvdis(shoshveg,'bray/curtis')
+part <- partana(sample(1:5,nrow(shoshveg),replace=TRUE),dis.bc)
+result <- partition(part,dis.bc)
 }
 \keyword{cluster}

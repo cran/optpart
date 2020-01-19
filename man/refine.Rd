@@ -1,8 +1,9 @@
 \name{refine}
 \alias{refine}
 \alias{refine.default}
-\alias{refine.pco}
+\alias{refine.dsvord}
 \alias{refine.nmds}
+\alias{refine.pco}
 \title{Refining a Classification by Re-Assigning Memberships}
 \description{Refine allows you to re-assign specific elements of a
 classification from one class or cluster to another.  In the default case, you
@@ -10,12 +11,12 @@ simply interactively enter sample IDs and give a new cluster assignment.  For
 PCO and NMDS ordinations, you do the assignments with a mouse.
 }
 \usage{
-\method{refine}{default}(x,clustering,\dots)
-\method{refine}{nmds}(x,clustering,ax=1,ay=2,\dots)
-\method{refine}{pco}(x,clustering,ax=1,ay=2,\dots)
+\method{refine}{default}(comm,clustering,\dots)
+\method{refine}{dsvord}(x,clustering,ax=1,ay=2,\dots)
 }
 \arguments{
-    \item{x}{a taxon dataframe or an ordination of class \sQuote{PCO} or \sQuote{NMDS}}
+    \item{comm}{a community data.frame}
+    \item{x}{an ordination of class \sQuote{dsvord}}
     \item{clustering}{a clustering identity or membership vector}
     \item{ax}{the X axis of the ordination}
     \item{ay}{the Y axis of the ordination}
@@ -38,12 +39,12 @@ in reduced dimensionality, which can be misleading.
     \email{droberts@montana.edu}
 }
 \examples{
-    \dontrun{data(shoshveg)}
-    \dontrun{dis.bc <- dsvdis(shoshveg,'bray')}
-    \dontrun{opt.5 <- optpart(5,dis.bc)}
-    \dontrun{nmds.bc <- nmds(dis.bc)}
-    \dontrun{plot(nmds.bc)}
-    \dontrun{res <- refine(nmds.bc,opt.5)}
+\dontrun{data(shoshveg)}
+\dontrun{dis.bc <- dsvdis(shoshveg,'bray')}
+\dontrun{opt.5 <- optpart(5,dis.bc)}
+\dontrun{nmds.bc <- nmds(dis.bc)}
+\dontrun{plot(nmds.bc)}
+\dontrun{res <- refine(nmds.bc,opt.5)}
 }
 \keyword{cluster}
 

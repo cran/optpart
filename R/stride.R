@@ -3,7 +3,7 @@ stride <- function (seq, arg2, type = "pam", numrep = 10, maxitr = 100)
     ncol <- length(seq)
     pnt <- 0
 
-    if (class(arg2) == "dist") {
+    if (inherits(arg2,'dist')) {
         if (type == "pam") {
             res <- matrix(NA, nrow = attr(arg2, "Size"), ncol = ncol)
             for (i in seq) {
@@ -15,6 +15,8 @@ stride <- function (seq, arg2, type = "pam", numrep = 10, maxitr = 100)
             row.names(out) <- attr(arg2, "Labels")
             out <- list(clustering = out, seq = seq, type='pam', source=deparse(substitute(arg2)))
             class(out) <- "stride"
+            attr(out,'call') <- match.call()
+            attr(out,'timestamp') <- date()
             out
         } else if (type == 'opt') {
             if (length(numrep) == 1) numrep <- rep(numrep,ncol)
@@ -36,6 +38,8 @@ stride <- function (seq, arg2, type = "pam", numrep = 10, maxitr = 100)
             out <- list(clustering = out, seq = seq, numitr = numitr,
                    maxitr=maxitr, numrep=numrep, type='optpart', source=deparse(substitute(arg2)))
             class(out) <- "stride"
+            attr(out,'call') <- match.call()
+            attr(out,'timestamp') <- date()
             out
         } else if (type == "kmeans") {
             if (length(numrep) == 1) numrep <- rep(numrep,ncol)
@@ -56,6 +60,8 @@ stride <- function (seq, arg2, type = "pam", numrep = 10, maxitr = 100)
             out <- list(clustering = out, seq = seq, maxitr=maxitr,
                         numrep=numrep, type='keans', source=deparse(substitute(arg2)))
             class(out) <- "stride"
+            attr(out,'call') <- match.call()
+            attr(out,'timestamp') <- date()
             out
         }
     } else if (class(arg2) == "hclust") {
@@ -69,6 +75,8 @@ stride <- function (seq, arg2, type = "pam", numrep = 10, maxitr = 100)
         row.names(out) <- arg2$labels
         out <- list(clustering = out, seq = seq, type='hclust', source=deparse(substitute(arg2)))
         class(out) <- "stride"
+        attr(out,'call') <- match.call()
+        attr(out,'timestamp') <- date()
         out
     } else print("you must enter an object of class 'dist' or class 'hclust'")
 }
@@ -95,8 +103,12 @@ extract <- function(stride,k)
 
 extract.stride <- function(stride,k)
 {
+   if (!inherits(stride,'stride'))
+       stop("The first argument must be an object of class 'stride'")
    pnt <- which(stride$seq==k)
    out <- list(clustering=stride$clustering[,pnt])
    class(out) <- 'clustering'
+   attr(out,'call') <- match.call()
+   attr(out,'timestamp') <- date()
    out
 }

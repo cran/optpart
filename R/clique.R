@@ -30,12 +30,16 @@ clique <- function (dist,alphac,minsize=1,mult=100)
          musubx <- 1 - matrix(tmp$ds,ncol=cols)[tmp$top:tmp$bottom,]
          test <- apply(musubx,1,sum) >= minsize 
          musubx <- musubx[test,]
+         colnames(musubx) <- attr(dist,'Labels')
          member <- list()
          for (i in 1:nrow(musubx)) {
            member[[i]] <- seq(1:ncol(musubx))[musubx[i,]==1]
          }
-         out <- list(musubx=musubx,member=member,alphac=alphac)
+         out <- list(musubx=musubx,member=member,alphac=alphac,
+                     names= attr(dist,'Labels'))
          attr(out,'class') <- 'clique'
+         attr(out,'call') <- match.call()
+         attr(out,'timestamp') <- date()
     }
     out
 }
@@ -77,3 +81,54 @@ plot.clique <- function(x, panel='all', ...)
         plot(sort(apply(x$musubx>0,2,sum)),xlab='plot',ylab='number of cliques')
     }
 }
+
+clique.size <- function (cli) 
+{
+    if (!inherits(cli,'clique'))
+        stop("You must pass an argument of class 'clique' from clique()")
+    out <- apply(cli$musubx,1,sum)
+    out
+}
+
+clique.occ <- function (cli) 
+{
+    if (!inherits(cli,'clique'))
+        stop("You must pass an argument of class 'clique' from clique()")
+    out <- apply(cli$musubx,2,sum)
+    out
+}
+
+clique.members <- function (cli,which='ALL') 
+{
+    if (!inherits(cli,'clique'))
+        stop("The first argument must be of class 'clique' from clique()")
+
+    names <- cli$names
+    
+    for (i in 1:length(cli$member)) {
+        x <- names[cli$member[[i]]]
+        if (which=='ALL' | which %in% x) {
+            cat("\n")
+            cat(x)
+        }
+    }
+    cat ("\n")
+}
+
+clique.venn <- function (cli,a,b) 
+{
+    if (!inherits(cli,'clique'))
+        stop("The first argument must be of class 'clique' from clique()")
+    numcli <- nrow(cli$musubx)
+    if (a > numcli  | b > numcli) 
+        stop(paste("Clique numbers must be less than",numcli+1))
+    inter <- intersect(cli$member[[a]],cli$member[[b]])
+    cat("\n")
+    cat(setdiff(cli$member[[a]],cli$member[[b]]))
+    cat("\n")
+    cat(inter)
+    cat("\n")
+    cat(setdiff(cli$member[[b]],cli$member[[a]]))
+    cat("\n")
+}
+

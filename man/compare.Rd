@@ -35,11 +35,11 @@ than the threshold appear in set \sQuote{both}.
     \email{droberts@montana.edu}
 }
 \examples{
-    data(shoshveg)        # returns vegetation data set
-    data(shoshsite)       # returns site data
-    elev.clust <- as.numeric(factor(cut(shoshsite$elevation,5)))
-                          # 5 elevation bands
-    elev.const <- const(shoshveg,elev.clust)
-    compare(elev.const,1,2)   # identify diagnostic species 
+data(shoshveg)        # returns vegetation data set
+data(shoshsite)       # returns site data
+elev.clust <- as.numeric(factor(cut(shoshsite$elevation,5)))
+                      # 5 elevation bands
+elev.const <- const(shoshveg,elev.clust)
+compare(elev.const,1,2)   # identify diagnostic species 
 }
 \keyword{multivariate}

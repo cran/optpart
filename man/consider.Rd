@@ -31,11 +31,11 @@ Nevertheless, sometimes it is desirable to simplify a classification for other r
 \seealso{\code{optpart}, \code{bestopt}
 }
 \examples{
-    data(shoshveg)         # returns a vegetation data.frame
-    dis.bc <- dsvdis(shoshveg,'bray') # calculates a Bray/Curtis
-                                      # dissimilarity matrix
-    opt.5 <- optpart(5,dis.bc)        # generates a 5 cluster partition
-    consider(opt.5)       # recommends possible clusters to merge
+data(shoshveg)                    # returns a vegetation data.frame
+dis.bc <- dsvdis(shoshveg,'bray') # calculates a Bray/Curtis
+                                  # dissimilarity matrix
+opt.5 <- optpart(5,dis.bc)        # generates a 5 cluster partition
+consider(opt.5)                   # recommends possible clusters to merge
 }
 
 \keyword{clustering}

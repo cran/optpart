@@ -41,6 +41,8 @@ tabdev.default <- function(x,clustering,nitr=999,...)
     names(tmp2) <- c('species','numocc','deviance','pval')
     result <- list(spcdev=tmp2,totdev=tmp$totdev)
     class(result) <- 'tabdev'
+    attr(result,'call') <- match.call()
+    attr(result,'timestamp') <- date()
     return(result)
 }
 
@@ -59,8 +61,8 @@ tabdev.stride <- function(x,taxa,...)
 
 summary.tabdev <- function (object,p=0.05,...) 
 {
-    if (class(object)!='tabdev') stop('You must pass an object of class objectdev')
-
+    if (!inherits(object,'tabdev')) 
+        stop('You must pass an object of class objectdev')
     tmp <- object$spcdev
     tmp <- tmp[tmp$pval<=p,]
     tmp <- tmp[order(tmp$pval),]

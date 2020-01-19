@@ -1,5 +1,5 @@
-reordclust <- function (clustering,from,to) 
-{
+reordclust <- function (clustering,from,to)
+{ 
     clustering <- as.integer(clustify(clustering))
 
     nfrom <- length(table(from))
@@ -13,5 +13,8 @@ reordclust <- function (clustering,from,to)
     out <- as.numeric(factor(out))
     out <- list(clustering=out)
     class(out) <- 'clustering'
+    attr(out,'call') <- match.call()
+    attr(out,'timestamp') <- date()
     out
 }
+

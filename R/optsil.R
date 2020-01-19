@@ -40,15 +40,15 @@ opts.core <- function (dist, clustering, maxitr = 100)
     out$sils <- (res$sils/numplt)[1:res$numitr]
     out$numitr <- res$numitr
     class(out) <- c('optsil', 'clustering')
+    attr(out,'call' ) <- match.call()
+    attr(out,'timestamp') <- date()
     out
 }
 
 optsil.default <- function(x,dist,maxitr=100)
 {
-    if (class(dist) != 'dist') {
-        stop('You must pass an object of class dist')
-    }
-    
+    if (!inherits(dist,'dist')) 
+        stop("The second argument must be an object of class 'dist'")
     if (is.numeric(x) && length(x) == 1) {
         out <- opts.core(dist,sample(1:x,attr(dist,'Size'),
             replace=TRUE),maxitr)
@@ -59,13 +59,17 @@ optsil.default <- function(x,dist,maxitr=100)
 
     attr(out,'class') <- c('optsil','clustering')
     attr(out,'call') <- match.call()
+    attr(out,'timestamp') <- date()
     out
 }
 
 optsil.stride <- function(x,dist,maxitr=100)
 {
-    if (class(x) != 'stride') 
-        stop('You must pass an object of class stride')
+    if (!inherits(x,'stride')) 
+        stop("The first argument must be an object of class 'stride'")
+   if (!inherits(dist,'dist')) 
+        stop("The second argument must be an object of class 'dist'")
+
     res <- matrix(NA,nrow=nrow(x$clustering),ncol=ncol(x$clustering))
     for (i in 1:ncol(x$clustering)) {
         tmp <- opts.core(dist,x$clustering[,i],maxitr)
@@ -77,5 +81,6 @@ optsil.stride <- function(x,dist,maxitr=100)
     out <- list(clustering=out,seq=x$seq)
     attr(out,'class') <- 'stride'
     attr(out,'call') <- match.call()
+    attr(out,'timestamp') <- date()
     out
 }

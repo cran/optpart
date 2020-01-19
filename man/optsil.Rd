@@ -58,12 +58,12 @@ object}
 \code{\link[optpart]{optpart}}
 }
 \examples{
-    data(shoshveg)
-    dis.bc <- dsvdis(shoshveg,'bray/curtis')
-    opt.5 <- optpart(5,dis.bc)
-    sil.5 <- optsil(opt.5,dis.bc,100) # make take a few minutes
-    summary(silhouette(sil.5,dis.bc))
-    \dontrun{plot(silhouette(sil.5,dis.bc))}
+data(shoshveg)
+dis.bc <- dsvdis(shoshveg,'bray/curtis')
+opt.5 <- optpart(5,dis.bc)
+sil.5 <- optsil(opt.5,dis.bc,100) # make take a few minutes
+summary(silhouette(sil.5,dis.bc))
+\dontrun{plot(silhouette(sil.5,dis.bc))}
 }
 \keyword{cluster}
 

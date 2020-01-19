@@ -25,11 +25,11 @@ graphic device.}
 \seealso{\code{\link[labdsv]{ordpart}}
 }
 \examples{
-    data(shoshveg)
-    dis.bc <- dsvdis(shoshveg,'bray/curtis')
-    demo <- hclust(dis.bc,'ave')
-    ave.5 <- slice(demo,5)
-    \dontrun{plot(demo)}
-    \dontrun{ave.clust <- slice(demo)}
+data(shoshveg)
+dis.bc <- dsvdis(shoshveg,'bray/curtis')
+demo <- hclust(dis.bc,'ave')
+ave.5 <- slice(demo,5)
+\dontrun{plot(demo)}
+\dontrun{ave.clust <- slice(demo)}
 }
 \keyword{cluster}
